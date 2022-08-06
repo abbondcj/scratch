@@ -1,0 +1,18 @@
+{
+    "users": [
+        {
+            "firstName": "Christopher",
+            "lastName" : "Abbondandelo",
+            "username": "abbondcj",
+            "email": "abbey@mail.com",
+            "id": 1
+        }
+    ],
+    "scores": [
+        {
+            "userId": 1,
+            "courseName": "Nashboro Golf Club",
+            "score": 97
+        }
+    ]
+}
