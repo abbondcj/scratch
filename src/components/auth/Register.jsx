@@ -4,6 +4,21 @@ import './Register.css'
 
 export const Register = () => {
     const [activePage, setPage] = useState(1);
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [passwordConfirm, setPasswordConfirm] = useState("")
+    const [username, setUsername] = useState("")
+    const [monthlyRounds, setMonthlyRounds] = useState(0)
+    const [averageScore, setAverageScore] = useState(0)
+    const [handicap, setHandicap] = useState(0)
+    const [city, setCity] = useState("")
+    const [state, setState] = useState("")
+    const [homeCourse, setHomeCourse] = useState("")
+    const [averageScoreGoal, setAverageScoreGoal] = useState(0)
+    const [handicapGoal, setHandicapGoal] = useState(0)
+
     const navigate = useNavigate()
 
     const pageSwitch = (isNext) => {
@@ -21,21 +36,75 @@ export const Register = () => {
         console.log("New user signed up")
     }
 
-    const PageOne = () => {
+    const pageOne = () => {
         return (
             <>
                 <div className='register_card'>
                     <h3>Profile Sign Up</h3>
                     <label>Email</label>
-                    <input type='email' placeholder='Email' />
+                    <input 
+                        autoFocus
+                        required
+                        value={email}
+                        onChange={
+                            (e) => {
+                                    let emailCopy = email
+                                    emailCopy = e.target.value
+                                    setEmail(emailCopy)
+                                }
+                            }   
+                        type='email' 
+                        placeholder='Email' 
+                    />
                     <label>Password</label>
-                    <input type='password' placeholder='Password' />
+                    <input 
+                        required
+                        value={password}
+                        onChange={
+                            (e) => {
+                                    let passwordCopy = password
+                                    passwordCopy = e.target.value
+                                    setPassword(passwordCopy)
+                                }
+                            }
+                        type='password' 
+                        placeholder='Password' 
+                    />
                     <label>Confirm password</label>
-                    <input type='password' placeholder='Confirm password' />
+                    <input 
+                        required
+                        value={passwordConfirm}
+                        onChange={
+                            (e) => {
+                                    let passwordConfirmCopy = passwordConfirm
+                                    passwordConfirmCopy = e.target.value
+                                    setPasswordConfirm(passwordConfirmCopy)
+                                }
+                            }
+                        type='password' 
+                        placeholder='Confirm password' 
+                    />
                     <div className='register_buttons'>
                         <button onClick={
                             () => {
-                                pageSwitch(true)
+                                if (email && password && passwordConfirm) {
+                                    if (email.match("@") && email.match(".com" || ".net" || ".mail")) {
+                                        if (password === passwordConfirm) {
+                                            pageSwitch(true)
+                                        } else {
+                                            window.alert("Passwords do not match")
+                                            setPassword("")
+                                            setPasswordConfirm("")
+                                        }
+                                    } else {
+                                        window.alert("Please enter a valid email")
+                                        setEmail("")
+                                        setPassword("")
+                                        setPasswordConfirm("")
+                                    }
+                                } else {
+                                    window.alert("Please enter in all information")
+                                }
                             }
                         }>
                             Next
@@ -48,17 +117,54 @@ export const Register = () => {
             </>
         )
     }
-    const PageTwo = () => {
+    const pageTwo = () => {
         return (
             <>
                 <div className='register_card'>
                     <h3>Profile Sign Up</h3>
                     <label>First name</label>
-                    <input type='text' placeholder='First name' />
+                    <input 
+                        autoFocus
+                        required
+                        value={firstName} 
+                        onChange={
+                            (e) => {
+                                let firstNameCopy = firstName
+                                firstNameCopy = e.target.value
+                                setFirstName(firstNameCopy)
+                            }
+                        }
+                        type='text' 
+                        placeholder='First name' 
+                    />
                     <label>Last name</label>
-                    <input type='text' placeholder='Last name' />
+                    <input 
+                        required
+                        onChange={
+                            (e) => {
+                                let lastNameCopy = lastName
+                                lastNameCopy = e.target.value
+                                setLastName(lastNameCopy)
+                            }
+                        }
+                        value={lastName} 
+                        type='text' 
+                        placeholder='Last name' 
+                    />
                     <label>Username</label>
-                    <input type='text' placeholder='Username' />
+                    <input 
+                        required
+                        onChange={
+                            (e) => {
+                                let usernameCopy = username
+                                usernameCopy = e.target.value
+                                setUsername(usernameCopy)
+                            }
+                        }
+                        value={username} 
+                        type='text' 
+                        placeholder='Username' 
+                    />
                     <div className='register_buttons'>
                         <button onClick={
                             () => {
@@ -69,7 +175,11 @@ export const Register = () => {
                         </button>
                         <button onClick={
                             () => {
-                                pageSwitch(true)
+                                if (firstName && lastName && username) {
+                                    pageSwitch(true)
+                                } else {
+                                    window.alert("Please enter in all information")
+                                }
                             }
                         }>
                             Next
@@ -82,17 +192,17 @@ export const Register = () => {
             </>
         )
     }
-    const PageThree = () => {
+    const pageThree = () => {
         return (
             <>
                 <div className='register_card'>
                     <h3>Profile Sign Up</h3>
                     <label>City</label>
-                    <input type='text' placeholder='City' />
+                    <input value={city} type='text' placeholder='City' />
                     <label>State</label>
-                    <input type='text' placeholder='State' />
+                    <input value={state} type='text' placeholder='State' />
                     <label>Home course</label>
-                    <input type='text' placeholder='Home course' />
+                    <input value={homeCourse} type='text' placeholder='Home course' />
                     <div className='register_buttons'>
                         <button onClick={
                             () => {
@@ -124,7 +234,7 @@ export const Register = () => {
         )
     }
 
-    const PageFour = () => {
+    const pageFour = () => {
         return (
             <>
                 <div className='register_card'>
@@ -166,7 +276,7 @@ export const Register = () => {
         )
     }
 
-    const PageFive = () => {
+    const pageFive = () => {
         return (
             <>
                 <div className='register_card'>
@@ -201,17 +311,17 @@ export const Register = () => {
     
     switch (activePage) {
         case 1:
-            return <PageOne />
+            return pageOne()
         case 2:
-            return <PageTwo />
+            return pageTwo()
         case 3: 
-            return <PageThree />
+            return pageThree()
         case 4:
-            return <PageFour />
+            return pageFour()
         case 5:
-            return <PageFive />
+            return pageFive()
         default:
-            return <PageOne />
+            return
     }
 }
 
