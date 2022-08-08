@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { database, getStates, states, users } from '../ApiManager';
 import './Register.css'
 
 export const Register = () => {
@@ -10,16 +11,27 @@ export const Register = () => {
     const [password, setPassword] = useState("")
     const [passwordConfirm, setPasswordConfirm] = useState("")
     const [username, setUsername] = useState("")
-    const [monthlyRounds, setMonthlyRounds] = useState(0)
-    const [averageScore, setAverageScore] = useState(0)
-    const [handicap, setHandicap] = useState(0)
+    const [roundsPerMonth, setRoundsPerMonth] = useState("")
+    const [averageScore, setAverageScore] = useState("")
+    const [handicap, setHandicap] = useState("")
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
     const [homeCourse, setHomeCourse] = useState("")
-    const [averageScoreGoal, setAverageScoreGoal] = useState(0)
-    const [handicapGoal, setHandicapGoal] = useState(0)
-
+    const [averageScoreGoal, setAverageScoreGoal] = useState("")
+    const [handicapGoal, setHandicapGoal] = useState("")
+    const [stateList, setStateList] = useState([])
     const navigate = useNavigate()
+
+    useEffect(
+        () => {
+            fetch(states)
+            .then((res) => res.json())
+            .then((data) => {
+                setStateList(data)
+            })
+        }, 
+        []
+    )
 
     const pageSwitch = (isNext) => {
         if (isNext) {
@@ -32,8 +44,46 @@ export const Register = () => {
             setPage(currentPage)
         }
     }
+
+
+    const itemExistsCheck = (type, value) => {
+        return (
+            fetch (users + `/?${type}=${value}`)
+            .then((res) => res.json())
+            .then(user => user.length ? user[0] : false)
+        )
+    }
+
     const signUp = () => {
-        console.log("New user signed up")
+        const newUser = {
+            firstName: firstName.trim(),
+            lastName : lastName.trim(),
+            username : username.trim(),
+            email : email.trim(),
+            password : password.trim(),
+            city : city.trim(),
+            state : state,
+            homeCourse : homeCourse.trim(),
+            roundsPerMonth : roundsPerMonth,
+            averageScore : averageScore,
+            handicap : handicap,
+            averageScoreGoal : averageScoreGoal,
+            handicapGoal : handicapGoal,
+            createDate: new Date().toDateString()
+        }
+        fetch(users, {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json"
+            },
+            body: JSON.stringify(newUser)
+          }
+        )
+        .then((res) => res.json())
+        .then((newUser) => {
+            localStorage.setItem("scratch_user_id", newUser.id)
+            navigate("/")
+        })
     }
 
     const pageOne = () => {
@@ -87,30 +137,48 @@ export const Register = () => {
                     <div className='register_buttons'>
                         <button onClick={
                             () => {
-                                if (email && password && passwordConfirm) {
-                                    if (email.match("@") && email.match(".com" || ".net" || ".mail")) {
-                                        if (password === passwordConfirm) {
-                                            pageSwitch(true)
+                                itemExistsCheck("email", email)
+                                .then(
+                                    (emailExists) => {
+                                        if (!emailExists) {
+                                            if (email && password && passwordConfirm) {
+                                                if (email.match("@") && email.match(".com" || ".net" || ".mail")) {
+                                                    if (password === passwordConfirm) {
+                                                        pageSwitch(true)
+                                                    } else {
+                                                        window.alert("Passwords do not match")
+                                                        setPassword("")
+                                                        setPasswordConfirm("")
+                                                    }
+                                                } else {
+                                                    window.alert("Please enter a valid email")
+                                                    setEmail("")
+                                                    setPassword("")
+                                                    setPasswordConfirm("")
+                                                }
+                                            } else {
+                                                window.alert("Please enter in all information")
+                                            }
                                         } else {
-                                            window.alert("Passwords do not match")
+                                            window.alert(`${email} is already associated with profile`)
+                                            setEmail("")
                                             setPassword("")
                                             setPasswordConfirm("")
                                         }
-                                    } else {
-                                        window.alert("Please enter a valid email")
-                                        setEmail("")
-                                        setPassword("")
-                                        setPasswordConfirm("")
                                     }
-                                } else {
-                                    window.alert("Please enter in all information")
-                                }
+                                )
                             }
                         }>
                             Next
                         </button>
                     </div>
-                    <button className='cancel_register' onClick={() => {navigate("/login")}}>
+                    <button 
+                        className='cancel_register' 
+                        onClick={
+                            () => {
+                                navigate("/login")
+                            }
+                    }>
                         Cancel
                     </button>
                 </div>
@@ -175,17 +243,33 @@ export const Register = () => {
                         </button>
                         <button onClick={
                             () => {
-                                if (firstName && lastName && username) {
-                                    pageSwitch(true)
-                                } else {
-                                    window.alert("Please enter in all information")
-                                }
+                                itemExistsCheck("username", username)
+                                .then(
+                                    (usernameExists) => {
+                                        if (!usernameExists) {
+                                            if (firstName && lastName && username) {
+                                                pageSwitch(true)
+                                            } else {
+                                                window.alert("Please enter in all information")
+                                            }
+                                        } else {
+                                            window.alert(`${username} is already associated with profile`)
+                                            setUsername("")
+                                        }
+                                    }
+                                )
                             }
                         }>
                             Next
                         </button>
                     </div>
-                    <button className='cancel_register' onClick={() => {navigate("/login")}}>
+                    <button 
+                        className='cancel_register' 
+                        onClick={
+                            () => {
+                                navigate("/login")
+                                }
+                    }>
                         Cancel
                     </button>
                 </div>
@@ -197,12 +281,52 @@ export const Register = () => {
             <>
                 <div className='register_card'>
                     <h3>Profile Sign Up</h3>
-                    <label>City</label>
-                    <input value={city} type='text' placeholder='City' />
                     <label>State</label>
-                    <input value={state} type='text' placeholder='State' />
+                    <select className='register_state_select' onChange={
+                        (e) => {
+                            let stateCopy = state
+                            stateCopy = e.target.value
+                            setState(stateCopy)
+                        }
+                    }>
+                        {state.length > 0 ? <></> : <option value="">Choose a state</option>}
+                        {
+                            stateList.map((state) => {
+                                return (
+                                    <option key={state} value={state}>{state}</option>
+                                )
+                            })
+                        }
+                    </select>
+                    <label>City</label>
+                    <input 
+                    autoFocus
+                    required
+                        onChange={
+                            (e) => {
+                                let cityCopy = city
+                                cityCopy = e.target.value
+                                setCity(cityCopy)
+                            }
+                        }
+                        value={city} 
+                        type='text' 
+                        placeholder='City' 
+                    />
                     <label>Home course</label>
-                    <input value={homeCourse} type='text' placeholder='Home course' />
+                    <input
+                    required
+                    onChange={
+                        (e) => {
+                            let homeCourseCopy = homeCourse
+                            homeCourseCopy = e.target.value
+                            setHomeCourse(homeCourseCopy)
+                        }
+                    }
+                    value={homeCourse} 
+                    type='text' 
+                    placeholder='Home course' 
+                    />
                     <div className='register_buttons'>
                         <button onClick={
                             () => {
@@ -226,7 +350,13 @@ export const Register = () => {
                             Next
                         </button>
                     </div>
-                    <button className='cancel_register' onClick={() => {navigate("/login")}}>
+                    <button 
+                        className='cancel_register' 
+                        onClick={
+                            () => {
+                                navigate("/login")
+                            }
+                    }>
                         Cancel
                     </button>
                 </div>
@@ -240,11 +370,60 @@ export const Register = () => {
                 <div className='register_card'>
                     <h3>Profile Sign Up</h3>
                     <label>Current rounds played per month</label>
-                    <input type='number' placeholder='Rounds per month' />
+                    <input 
+                        onChange={
+                            (e) => {
+                                let roundsPerMonthCopy = roundsPerMonth
+                                roundsPerMonthCopy = e.target.value
+                                if (isNaN(roundsPerMonthCopy)) {
+                                    window.alert("Must enter number only")
+                                    setRoundsPerMonth(0)
+                                } else {
+                                    setRoundsPerMonth(roundsPerMonthCopy)
+                                }
+                            }
+                        }
+                        value={roundsPerMonth}
+                        type='number' 
+                        placeholder='Rounds per month' 
+                    />
                     <label>Average score</label>
-                    <input type='number' placeholder='Home course' />
+                    <input 
+                        onChange={
+                            (e) => {
+                                let averageScoreCopy = averageScore
+                                averageScoreCopy = e.target.value
+                                if (isNaN(averageScoreCopy)) {
+                                    window.alert("Must enter number only")
+                                    setAverageScore(0)
+                                } else {
+                                    setAverageScore(averageScoreCopy)
+                                }
+                            }
+                        }
+                        value={averageScore}
+                        type='number' 
+                        placeholder='Home course' 
+                    />
                     <label>Current handicap</label>
-                    <input type='number' placeholder='Handicap' />
+                    <input 
+                        onChange={
+                            (e) => {
+                                let handicapCopy = handicap
+                                handicapCopy = e.target.value
+                                console.log(handicapCopy)
+                                if (isNaN(handicapCopy)) {
+                                    window.alert("Must enter number only")
+                                    setHandicap(0)
+                                } else {
+                                    setHandicap(handicapCopy)
+                                }
+                            }
+                        }
+                        value={handicap}
+                        type='number' 
+                        placeholder='Handicap' 
+                    />
                     <div className='register_buttons'>
                         <button onClick={
                             () => {
@@ -268,7 +447,13 @@ export const Register = () => {
                             Next
                         </button>
                     </div>
-                    <button className='cancel_register' onClick={() => {navigate("/login")}}>
+                    <button
+                    className='cancel_register' 
+                    onClick={
+                        () => {
+                            navigate("/login")
+                        }
+                    }>
                         Cancel
                     </button>
                 </div>
@@ -282,9 +467,39 @@ export const Register = () => {
                 <div className='register_card'>
                     <h3>Profile Sign Up</h3>
                     <label>Average score goal</label>
-                    <input type='number' placeholder='Average score goal' />
+                    <input 
+                        onChange={
+                            (e) => {
+                                let averageScoreGoalCopy = averageScoreGoal
+                                averageScoreGoalCopy = e.target.value
+                                if (isNaN(averageScoreGoalCopy)) {
+                                    window.alert("Must enter number")
+                                } else {
+                                    setAverageScoreGoal(averageScoreGoalCopy)
+                                }
+                            }
+                        }
+                        value={averageScoreGoal}
+                        type='int' 
+                        placeholder='Average score goal' 
+                    />
                     <label>Handicap goal</label>
-                    <input type='number' placeholder='Handicap goal' />
+                    <input 
+                        onChange={
+                            (e) => {
+                                let handicapGoalCopy = handicapGoal
+                                handicapGoalCopy = e.target.value
+                                if (isNaN(handicapGoalCopy)) {
+                                    window.alert("Must enter number")
+                                } else {
+                                    setHandicapGoal(handicapGoalCopy)
+                                }
+                            }
+                        }
+                        value={handicapGoal}
+                        type='int' 
+                        placeholder='Handicap goal' 
+                    />
                     <div className='register_buttons'>
                         <button onClick={
                             () => {
@@ -301,7 +516,13 @@ export const Register = () => {
                             Sign up
                         </button>
                     </div>
-                    <button className='cancel_register' onClick={() => {navigate("/login")}}>
+                    <button 
+                        className='cancel_register' 
+                        onClick={
+                            () => {
+                                navigate("/login")
+                            }
+                    }>
                         Cancel
                     </button>
                 </div>

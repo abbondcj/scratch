@@ -21,6 +21,11 @@
     width: 40%;
 }
 
+.register_state_select {
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
 button {
     text-align: center;
     min-width: 60px;
