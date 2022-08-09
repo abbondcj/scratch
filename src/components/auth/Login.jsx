@@ -22,7 +22,7 @@ export const Login = () => {
                 if (userExists) {
                     if (userExists.password === password) {
                         localStorage.setItem("scratch_user_id", userExists.id)
-                        navigate("/")
+                        navigate("/home")
                     } else {
                         window.alert("Incorrect password")
                         setPassword("")
