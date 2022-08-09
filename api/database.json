@@ -79,18 +79,227 @@
       "homeCourse": "Mo Town Golf",
       "roundsPerMonth": "1",
       "averageScore": "100",
-      "handicap": "28",
+      "handicap": "15",
       "averageScoreGoal": "90",
       "handicapGoal": "18",
       "createDate": "Mon Aug 08 2022",
       "id": 5
     }
   ],
+  "courses": [
+    {
+      "name": "Nashboro Golf Club",
+      "state": "TN",
+      "city": "Nashville",
+      "id": 1
+    }
+  ],
   "scores": [
     {
       "userId": 1,
       "courseName": "Nashboro Golf Club",
-      "score": 97
+      "roundDate": "Sun Aug 07 2022",
+      "par": 72,
+      "tees": "middle",
+      "score": 80,
+      "driveFairway": 8,
+      "driveFairwayLeft": 2,
+      "driveFairwayRight": 2,
+      "driveFairwayShort": 0,
+      "driveFairwayLong": 1,
+      "gir": 9,
+      "putts": 36,
+      "aces": 0,
+      "albatross": 0,
+      "birdies": 1,
+      "pars": 6,
+      "bogeys": 11,
+      "dooubleBogeys": 0,
+      "tripleBogeys": 0,
+      "quadPlusBogeys": 0,
+      "holes": [
+        {
+          "number": 1,
+          "yards": 412,
+          "par": 4,
+          "teeShotResult": "fairway",
+          "gir": false,
+          "putts": 2,
+          "score": 5,
+          "id": 1
+        },
+        {
+          "number": 2,
+          "yards": 512,
+          "par": 5,
+          "teeShotResult": "fairway",
+          "gir": true,
+          "putts": 3,
+          "score": 6,
+          "id": 2
+        },
+        {
+          "number": 3,
+          "yards": 172,
+          "par": 3,
+          "teeShotResult": "green",
+          "gir": true,
+          "putts": 2,
+          "score": 4,
+          "id": 3
+        },
+        {
+          "number": 4,
+          "yards": 472,
+          "par": 4,
+          "teeShotResult": "fairway-right",
+          "gir": false,
+          "putts": 2,
+          "score": 5,
+          "id": 4
+        },
+        {
+          "number": 5,
+          "yards": 422,
+          "par": 4,
+          "teeShotResult": "fairway",
+          "gir": false,
+          "putts": 2,
+          "score": 5,
+          "id": 5
+        },
+        {
+          "number": 6,
+          "yards": 442,
+          "par": 4,
+          "teeShotResult": "fairway",
+          "gir": true,
+          "putts": 2,
+          "score": 4,
+          "id": 6
+        },
+        {
+          "number": 7,
+          "yards": 392,
+          "par": 4,
+          "teeShotResult": "fairway-right",
+          "gir": false,
+          "putts": 2,
+          "score": 5,
+          "id": 7
+        },
+        {
+          "number": 8,
+          "yards": 492,
+          "par": 5,
+          "teeShotResult": "fairway",
+          "gir": true,
+          "putts": 2,
+          "score": 5,
+          "id": 8
+        },
+        {
+          "number": 9,
+          "yards": 190,
+          "par": 3,
+          "teeShotResult": "green-right",
+          "gir": false,
+          "putts": 2,
+          "score": 4,
+          "id": 9
+        },
+        {
+          "number": 10,
+          "yards": 412,
+          "par": 4,
+          "teeShotResult": "fairway",
+          "gir": true,
+          "putts": 2,
+          "score": 4,
+          "id": 10
+        },
+        {
+          "number": 11,
+          "yards": 512,
+          "par": 5,
+          "teeShotResult": "fairway",
+          "gir": false,
+          "putts": 2,
+          "score": 6,
+          "id": 11
+        },
+        {
+          "number": 12,
+          "yards": 172,
+          "par": 3,
+          "teeShotResult": "green",
+          "gir": true,
+          "putts": 2,
+          "score": 3,
+          "id": 12
+        },
+        {
+          "number": 13,
+          "yards": 172,
+          "par": 3,
+          "teeShotResult": "green",
+          "gir": false,
+          "putts": 2,
+          "score": 4,
+          "id": 13
+        },
+        {
+          "number": 14,
+          "yards": 422,
+          "par": 4,
+          "teeShotResult": "fairway",
+          "gir": true,
+          "putts": 2,
+          "score": 4,
+          "id": 14
+        },
+        {
+          "number": 15,
+          "yards": 442,
+          "par": 4,
+          "teeShotResult": "fairway-left",
+          "gir": true,
+          "putts": 2,
+          "score": 4,
+          "id": 15
+        },
+        {
+          "number": 16,
+          "yards": 392,
+          "par": 4,
+          "teeShotResult": "fairway-left",
+          "gir": false,
+          "putts": 2,
+          "score": 5,
+          "id": 16
+        },
+        {
+          "number": 17,
+          "yards": 492,
+          "par": 5,
+          "teeShotResult": "fairway-long",
+          "gir": true,
+          "putts": 1,
+          "score": 4,
+          "id": 17
+        },
+        {
+          "number": 18,
+          "yards": 190,
+          "par": 3,
+          "teeShotResult": "green-right",
+          "gir": false,
+          "putts": 2,
+          "score": 4,
+          "id": 18
+        }
+      ],
+      "id": 1
     }
   ],
   "states": [
