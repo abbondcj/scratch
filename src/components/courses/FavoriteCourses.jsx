@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const FavoriteCourses = () => {
+export const Courses = () => {
   return (
-    <div>Favorite Courses</div>
+    <div>Courses</div>
   )
 }
 
