@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { database, getStates, states, users } from '../ApiManager';
+import { states, users } from '../ApiManager';
 import './Register.css'
 
 export const Register = () => {
