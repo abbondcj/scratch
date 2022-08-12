@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import './Nav.css'
 
 export const Nav = () => {
@@ -25,6 +24,9 @@ export const Nav = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="profile">Profile</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="place-test">test</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="login" onClick={() => {localStorage.removeItem("scratch_user_id")}}>Logout</a>
