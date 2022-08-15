@@ -26,9 +26,6 @@ export const Nav = () => {
               <a className="nav-link" href="profile">Profile</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="place-test">test</a>
-            </li>
-            <li className="nav-item">
               <a className="nav-link" href="login" onClick={() => {localStorage.removeItem("scratch_user_id")}}>Logout</a>
             </li>
           </ul>
