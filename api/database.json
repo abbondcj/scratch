@@ -84,6 +84,23 @@
       "handicapGoal": "18",
       "createDate": "Mon Aug 08 2022",
       "id": 5
+    },
+    {
+      "firstName": "Erin",
+      "lastName": "Toney",
+      "username": "erintoney",
+      "email": "elt928@mail.com",
+      "password": "Ilovec",
+      "city": "Forest",
+      "state": "VA",
+      "homeCourse": "Colonial Hils",
+      "roundsPerMonth": "20",
+      "averageScore": "1",
+      "handicap": "-1",
+      "averageScoreGoal": "1",
+      "handicapGoal": "0",
+      "createDate": "Sat Aug 13 2022",
+      "id": 6
     }
   ],
   "courses": [
