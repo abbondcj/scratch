@@ -4,6 +4,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 import { gc_header } from "../ApiManager";
+import { prepFavoriteCourse } from "../courses/FavoriteCourses";
 import './CourseSearch.css'
 
 export const CourseSearch = () => {
@@ -26,7 +27,6 @@ export const CourseSearch = () => {
         .then(response => response.json())
         .then(
             (data) => {
-                console.log(data.courses)
                 setCourseList(data.courses)
                 let searchCountCopy = searchCount
                 searchCountCopy += 1
@@ -66,7 +66,6 @@ export const CourseSearch = () => {
       // Get latitude and longitude via utility functions
       getGeocode({ address: description }).then((results) => {
         const { lat, lng } = getLatLng(results[0]);
-        console.log("📍 Coordinates: ", { lat, lng });
         retrieveCourses(lat.toString(), lng.toString())
       });
     };
@@ -114,7 +113,15 @@ export const CourseSearch = () => {
                             <p>{course.distance}mi from {selectedLocation}</p>
                             <div className="course_buttons">
                                 <button>Play</button>
-                                <button>Favorite</button>
+                                <button 
+                                value={course.name + '--' + course.zip_code}
+                                onClick={
+                                    (e) => {
+                                    prepFavoriteCourse(e.target.value)
+                                    }
+                                }>
+                                    Favorite
+                                </button>
                             </div>
                         </div>
                     )
