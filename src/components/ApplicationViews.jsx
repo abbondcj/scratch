@@ -5,7 +5,7 @@ import { Dashboard } from './dashboard/Dashboard'
 import { FindCourse } from './play/FindCourse'
 import { Play } from './play/Play'
 import { Profile } from './profile/Profile'
-import { Stats } from './stats/Stats'
+import { Scores } from './stats/Scores'
 
 export const ApplicationViews = () => {
   return (
@@ -14,7 +14,7 @@ export const ApplicationViews = () => {
         <Route path="/home" element={<Dashboard />}></Route>
         <Route path="/play" element={<Play />}></Route>
         <Route path="/find-course" element={<FindCourse />}></Route>
-        <Route path="stats" element={<Stats />}></Route>
+        <Route path="/scores" element={<Scores />}></Route>
         <Route path="/courses" element={<Courses />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
       </Routes>

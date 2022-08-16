@@ -5,7 +5,7 @@ export const Play = () => {
   const navigate = useNavigate()
   return (
     <>
-      <div>Play</div>
+      <h3>Play</h3>
       <button onClick={() => {navigate("/find-course")}}>Find a course</button>
     </>
   )

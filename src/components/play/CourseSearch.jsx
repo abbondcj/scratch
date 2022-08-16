@@ -3,6 +3,7 @@ import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
+import { gc_header } from "../ApiManager";
 import './CourseSearch.css'
 
 export const CourseSearch = () => {
@@ -18,10 +19,7 @@ export const CourseSearch = () => {
     const radius = "10"
     const options = {
         method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '4a7a12f70bmsh354c4e76be8cdf6p1b69d3jsnf8c18f063789',
-            'X-RapidAPI-Host': 'golf-course-finder.p.rapidapi.com'
-        }
+        headers: gc_header
     };
     
     fetch(`https://golf-course-finder.p.rapidapi.com/courses?radius=${radius}&lat=${lat}&lng=${long}`, options)
@@ -35,7 +33,7 @@ export const CourseSearch = () => {
                 setSearchCount(searchCountCopy)
             }
         )
-        .catch(err => setReceivedError(true));
+        .catch((err) => {if (err) {setReceivedError(true)}});
 }
 
   const {
@@ -94,7 +92,7 @@ export const CourseSearch = () => {
         id = "user_city_input"
         value={value}
         onChange={handleInput}
-        placeholder="Where are you going?"
+        placeholder="Search a city or town"
         />
       <div className="city_result_container">
         {status === "OK" && renderSuggestions()}
@@ -121,6 +119,9 @@ export const CourseSearch = () => {
                         </div>
                     )
                 }) : ``
+            }
+            {
+              receivedError ? <p>No courses near {selectedLocation}</p> : ``
             }
         </div>
     </div>
