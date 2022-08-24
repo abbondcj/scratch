@@ -106,9 +106,9 @@ export const CourseSearch = () => {
             }
             {
                 courseList.length >= 1 ?
-                courseList.map((course) => {
+                courseList.map((course, index) => {
                     return (
-                        <div key={course.name} className="course_name_result">
+                        <div key={index} className="course_name_result">
                             <p id="course_name">{course.name}</p>
                             <p>{course.distance}mi from {selectedLocation}</p>
                             <div className="course_buttons">

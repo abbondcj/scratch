@@ -1,0 +1,27 @@
+.favorite_course_result {
+    border: 2px white solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    padding: 1%;
+    max-width: 70%;
+  }
+  
+  #course_name {
+    font-weight: bold;
+  }
+
+  #find_course_button {
+    margin-bottom: 1%;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .favorite_course_result button {
+    border: none;
+    border-radius: 5px;
+    margin: 1%;
+}
