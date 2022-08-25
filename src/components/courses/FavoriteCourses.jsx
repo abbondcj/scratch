@@ -83,7 +83,7 @@ export const Courses = () => {
                             <p id="course_name">{course.name}</p>
                             <p>{course.address}</p>
                             <p>{course.phone}</p>
-                            <p>Google Rating: {course.rating? course.rating : `NA`}</p>
+                            <p>Google Rating: {course.rating? course.rating + `/10` : `Not Available`}</p>
                             <a href={course.website}>Website</a>
                             <a href={course.goolgeMaps}>Directions</a>
                             <div className="course_buttons">
