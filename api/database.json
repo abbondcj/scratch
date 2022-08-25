@@ -507,6 +507,208 @@
       "goolgeMaps": "https://maps.google.com/?cid=17614805498685915762",
       "website": "http://lakeviewgolf.net/",
       "id": 4
+    },
+    {
+      "userId": 1,
+      "name": "Bergen Point Golf Course",
+      "address": "69 Bergen Ave, West Babylon, NY 11704, USA",
+      "phone": "(631) 661-8282",
+      "hours": [
+        "Monday: 6:00 AM – 6:00 PM",
+        "Tuesday: 6:00 AM – 6:00 PM",
+        "Wednesday: 6:00 AM – 6:00 PM",
+        "Thursday: 6:00 AM – 6:00 PM",
+        "Friday: 6:00 AM – 6:00 PM",
+        "Saturday: 6:00 AM – 6:00 PM",
+        "Sunday: 6:00 AM – 6:00 PM"
+      ],
+      "photos": [
+        {
+          "height": 596,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/114406170129019151451\">Bergen Point Golf Course</a>"
+          ],
+          "photo_reference": "AeJbb3cTri-TH3MGMOgfSgFR6hCG4WHxd_l1EzHOZbCP-k44XYq5h4eoi-2bCmmtLhjoBxzUgnSe3dnmZewxQrSNR251M0dL-gd72xn0H8edhAKmsSHUQUk12agjfPMD0WJaXu08sENISm4V3o5ttygSOBE-8j-V2Nxm1h44ThmSY0Q5cteq",
+          "width": 1060
+        },
+        {
+          "height": 1908,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/114620958313254847108\">Charles Cordova</a>"
+          ],
+          "photo_reference": "AeJbb3f_eXwwn_AVgCdh-y7NJDivJFxTmwmg7ZRY9GuVi4YHnHGQj3rk8Gu6q5aL2tSKVUHStUS245lQtWRPabFd98-Vlc5uZ5Sgc7L4pCb3YnefGbBArkwY5uQQNCN5VPkQpO7Q54U-43tt01rTcZZrGOAdDExxKeueXPWzIcM4aw1bLgOe",
+          "width": 4032
+        },
+        {
+          "height": 2184,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/114620958313254847108\">Charles Cordova</a>"
+          ],
+          "photo_reference": "AeJbb3c5PWjxhjV_OcX5qse9VBpC2faTg-JUj2bunzu1qiKktm454nua-dcIvxPuFXYMLDchZ4gJ2Rs7cCGePihftVmZ1_m-VmqsQUHaP3iYv6Olg8jbPNhjFxQCftzgVlKYEiwwammNZzYvVFM8YP5funr3iwjaJGMrzf4PjhD-MH5DVh5F",
+          "width": 4608
+        },
+        {
+          "height": 3040,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/100504680547084640841\">Bob McElroy</a>"
+          ],
+          "photo_reference": "AeJbb3db5yf-wjAa6GQmMAP4VHA2VZfwlEVgMAtU7z1w1RD06-HTZmlJPwrAQHuofCRygKqK9TaLJ1NdPifO8s5PLlArGVop0-CpFVaI6Jxntsm1wi4Ws9YLgVUFzt_GXX-SoYslojDT0q3QTDfukwpBTYg-2q4GDTVeWQ-RW-tjKLOKp2V9",
+          "width": 4096
+        },
+        {
+          "height": 3036,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/105400243522126219434\">Jaime Martinez</a>"
+          ],
+          "photo_reference": "AeJbb3c7qWSsaP5ZcjuEGOq0XmtTW6tMBw8Fgu7W6Iv6SKC_yk8iEertMI0G-FWY1ZGRF-3yxUl1FeswTvpwQ7J8adXrziGYc6EBa1ngFqeyL4yk2vLoJ7HT_4zU7LPgL3Unza7OuPfK8UgzD-MMjEtgq-jlaL5fKu0KDO4FAac1j722EmrP",
+          "width": 4048
+        },
+        {
+          "height": 3024,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/109938938828339932303\">Dennis Gog</a>"
+          ],
+          "photo_reference": "AeJbb3f5046mG0aJUxNIlQoYGnEEDjscgTZuRd5zfzwfZ3wWpSoMciVUUFzsMUdc4KlIH_UpGuzdke2HPqCI8u9Dcn8he0Y39Rog7V611Zd0M9VqSURpGix6VepyJ0uVt4vtcpEPZgCA9RG34MT4bKIpVOgDq0MuFHNxW4YEEzD4c1lZMULF",
+          "width": 4032
+        },
+        {
+          "height": 6936,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/101887104985906811570\">Chris Freiburger</a>"
+          ],
+          "photo_reference": "AeJbb3fEsSH1gBAA2qA2pldkMANlYkJhAzJab-J7_y0Iwp6mbnaT8BsrP64JbJycDL3ApW9RMLzQXrCWYphKYSleI95ZYe9MlRlXc8TrwvytZ9i0RkY9_zHkF40qckWFDQfp9_ub38rT__3NZP6nwOuOEZWS3XAadQgYXC_LF1jlu4vVzONW",
+          "width": 9248
+        },
+        {
+          "height": 2988,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/101198877820585598989\">Richie Rich</a>"
+          ],
+          "photo_reference": "AeJbb3d4ySqAzdkrPapCtPiwyKBTHdRmrMMt9KBjNxRDTqNw0NsVVWRrEJzG5bEj-ol5uHsyZhEzE5ct-wflGCH2cWfgYjSwSPTu45LlblYUtRAosDCWqg0KqsubRMIqNIKILRzW02dcD1y_mnzCrn5xZb6f20b16KiwvvQxt-3gbObTqgTj",
+          "width": 5312
+        },
+        {
+          "height": 2610,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/109147427315743742652\">Tariq Khan</a>"
+          ],
+          "photo_reference": "AeJbb3cnqLrmlxdL7StpiPGwNJfzocAEtK4THaIomrOlePGoigIvDvQBpgG8vz4-fZMfyRsc_nbT8xT-XH-GO23vdrjL6IdUJ72sFsVF8uNBrPspOXBrHbgfb6BHe_9nTlAY37YLPAdU4Xx5p-of3ZQoLy_6xoFnLnxKMrt-t8aJhSFSKuK9",
+          "width": 4640
+        },
+        {
+          "height": 2610,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/103751093971803868236\">Adam Volpe</a>"
+          ],
+          "photo_reference": "AeJbb3fjrHHOA7DyHiZeVAyDKQTTTPXfCBUgjW1ZEcBI-28eJc1baBkSXIlmweUeS0NT_bmMGtNdbYgpvkOZn6s3TQdHm70Vyu6gEgHds4-XPiPcHT3oGj11i7Nm-NVmKsJ9jGMWCNcg0ibZcIab17YSO54bY4S2PLQyG5OahK0mLgLfRYVp",
+          "width": 4640
+        }
+      ],
+      "rating": 4,
+      "goolgeMaps": "https://maps.google.com/?cid=3867465507281690426",
+      "website": "http://www.bergenpointgolf.com/",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "name": "Two Rivers Golf Course",
+      "address": "2235 2 Rivers Pkwy, Nashville, TN 37214, USA",
+      "phone": "(615) 889-2675",
+      "hours": [
+        "Monday: 8:00 AM – 6:30 PM",
+        "Tuesday: 8:00 AM – 6:30 PM",
+        "Wednesday: 8:00 AM – 6:30 PM",
+        "Thursday: 8:00 AM – 6:30 PM",
+        "Friday: 8:00 AM – 6:30 PM",
+        "Saturday: 7:00 AM – 6:30 PM",
+        "Sunday: 7:00 AM – 6:30 PM"
+      ],
+      "photos": [
+        {
+          "height": 1536,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/101369013635863068552\">Jarrod Vestal</a>"
+          ],
+          "photo_reference": "AeJbb3cC-pLuC4RRiVePynyOksJpzwn5AbBAUgF2foOlCbGdo-L4NKJFlm5B3WoxnPMLIVsGDcV2qucOzDKJwHw6DpEOK__yT3r9Ne0dGa7BomovpPBP56HD_aHS69vBmAPm_FSmUjFEH0uDiMYOBdcRaMBNxOLBdpAHOLG5YsMbMZSsV9HI",
+          "width": 2048
+        },
+        {
+          "height": 3840,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/115927014331770571477\">Manfred Schüttler</a>"
+          ],
+          "photo_reference": "AeJbb3fQDycBzjSxbu-0VHhqu1gYAfJvX_ic6D86iBqxi8ol8CrLP8DsXVP987oJS3FNivflaKftn0nUB_qxuqmj4LwzTLJKcbMLu28KWC41iSGM04FswGa0Mkkfxp7drWjPh5GUDtgLqbJ7WCoNMEL9Mqg0Ex3VQYSEhp0zkd4uzT_HaUa_",
+          "width": 5120
+        },
+        {
+          "height": 2988,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/118381554601408427801\">Kimmy Elizondo</a>"
+          ],
+          "photo_reference": "AeJbb3dU2DEzpTiJfgNDrvhIXCuA42I4QJJXIaQQrEGW_xUavAXJwsZt7n2x1P7UEK0xUVFPNUXQ0Bc64TngGnQ_FkJV2C6fiqNKmqOyXeWdFJLyF8Tumfkedn3_Gi5MOy_t6NyFgSpaOdeyUdZsSrYRpN937lw81qoNbKfqx7xIk0JEiSGr",
+          "width": 3871
+        },
+        {
+          "height": 5120,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/115927014331770571477\">Manfred Schüttler</a>"
+          ],
+          "photo_reference": "AeJbb3fAWhaKMwvDWu5woM1RrvWWmkNOHeSG6-fyfGP8Q1F_IHXsirsTP84O8xn3tK5pmrk2VcSyqtt_0PfaIKWq_wy4Ky58amAL17EREeq7NWn_sPRc_bd7YwtXo_5A8-JnXLuj9cbPMOxp2aQhbyl5l9AKF1YRtjZSKUL3uTplM3Ri53cd",
+          "width": 3840
+        },
+        {
+          "height": 3024,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/108387328118670529758\">Randy Borz</a>"
+          ],
+          "photo_reference": "AeJbb3fUYeb2so_4uK3Je5bom-L3bIa0B2EnT2k4u3bR1Ntp-V4zqcivDNmVRq-eaLjL7SAYf2uXSOJh9fVWVjYCIkunblDk8PPJFpkvDNI1hWe4VTlE78ZJgg0kPmeLuVv3f8sHxAvOumYsy6Md3lHXgspVBnl4alCSN8nHAWxjeuc81wXT",
+          "width": 4032
+        },
+        {
+          "height": 2576,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/108573681087070865670\">Cyntia Perez</a>"
+          ],
+          "photo_reference": "AeJbb3dBn7mTwUnCLauWu0psl9o9kY4SW3BvTUUMtmcysaSXoQqlwZ74JfRXQTwkjraGDtYrECGgQ9L3AFKxrMD18bXKTxD-0Ur0ZyH6_Mev-U4wJ7_SmY3qEmEUIxWHYdKaVwUUqhh0C6FtoMJ7bXuoGlMzbORe1cE3BcbFGmHUKIPbzqSn",
+          "width": 1932
+        },
+        {
+          "height": 3024,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/110951600278261778999\">Ed Stinson</a>"
+          ],
+          "photo_reference": "AeJbb3fv-cCrEtcCXErjTk_x_noeyILkNrTzKpt9N7vaYaEP5EcjWBaZRVevy1596jox1TL3SEIcfmHT_KyWI5UtlnJDSXJxCxzp-3bfIx0Mm7eaqDNN1cLtPF5W-s_mCtmQ8chHIuFrjxk7pIKEywBUIQaNp1Q5KsTNtz9BHzwLVNLBpia_",
+          "width": 4032
+        },
+        {
+          "height": 3024,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/107673546973364450921\">Terrence Mahnken</a>"
+          ],
+          "photo_reference": "AeJbb3fr9pxFrCshT3wBdljUqCtn5Uw8Db3BUtR0oLkaskPqOlDcCfFSQMNpKHlR3saEmdVb5OVqe61KXsWPWTF1QQ9J6u1FElmEZLgtV4qPbIXH9a5x-qVZ4NrZGB3uuNYbWiQ8kc8RrNuDmiEcw1-stchjCQwQyIBp-f0s5RDBr-sB6f98",
+          "width": 4032
+        },
+        {
+          "height": 1836,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/108128018054898617297\">Carlos Tzunun</a>"
+          ],
+          "photo_reference": "AeJbb3eXq8LXEOS7windiJKxJvaodHYcYUhW2owbeEnv3fguXG1QhqjOgsYmczB4xvOd-TPRMnwwlKoS8cuJrxT7B0sE0WJOibVBNpD69QWOaSRVQiq40IsMS3PDbta_62V9GsOYo6U_SeLMrE55GWkva4U8n-uziKO3ZHdFp9QfpY9D-W5y",
+          "width": 3264
+        },
+        {
+          "height": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/101034174775913449763\">Jeremy Crantek</a>"
+          ],
+          "photo_reference": "AeJbb3cqsme8qYP6gLfPy1iMbD3jk4PUO6_deRTjxwjQjt9SFq367-Kd92sSCnEPjZSFvz4MwWxVY8mzI6VG26kbvJ4x6G-fdVuJfYbZ9ehisU9nClk7pPADR3d9txGmhLbUFV3-i_uLpiFJwgbzqzR4t_DtxDajwAd9hEWrajrpoLOCcR3p",
+          "width": 3024
+        }
+      ],
+      "rating": 4.4,
+      "goolgeMaps": "https://maps.google.com/?cid=13531264812719905070",
+      "website": "https://www.nashville.gov/departments/parks/golf-courses/two-rivers-golf-course",
+      "id": 6
     }
   ],
   "scores": [
