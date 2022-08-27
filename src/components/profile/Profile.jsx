@@ -1,8 +1,12 @@
 import React from 'react'
+import { Nav } from '../nav/Nav'
 
 export const Profile = () => {
   return (
-    <div>Profile</div>
+    <>
+      <Nav />
+      <h3>Profile</h3>
+    </>
   )
 }
 

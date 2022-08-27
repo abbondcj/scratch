@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { favorite_courses } from '../ApiManager'
+import { Nav } from '../nav/Nav'
 import './FavoriteCourse.css'
 
 const addFavoriteCourse = (coursObj) => {
@@ -71,6 +72,7 @@ export const Courses = () => {
 
   return (
     <>
+      <Nav />
       <h3>Favorite Courses</h3>
       <button id="find_course_button" onClick={() => {navigate("/find-course")}}>Find a course</button>
       <div className="favorite_courses_container">
