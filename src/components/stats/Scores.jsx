@@ -1,9 +1,11 @@
 import React from 'react'
+import { Nav } from '../nav/Nav'
 
 export const Scores = () => {
   return (
     <>
-        <h3>Scores</h3>
+      <Nav />
+      <h3>Scores</h3>
     </>
   )
 }

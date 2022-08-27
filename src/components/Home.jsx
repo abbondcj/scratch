@@ -7,7 +7,7 @@ export const Home = () => {
     if (localStorage.getItem("scratch_user_id")) {
       return(
         <>
-            <Nav />
+            {/* <Nav /> */}
             <ApplicationViews />
         </>
         )

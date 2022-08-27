@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { favorite_courses } from '../ApiManager'
+import { Nav } from '../nav/Nav'
 import './Play.css'
+import { Scorecard } from './Scorecard'
 
 export const Play = () => {
   const [favoriteCourseList, getFavorites] = useState([])
@@ -20,8 +22,14 @@ export const Play = () => {
     }, []
   )
 
+  const displayScorecard = (courseId) => {
+    return <Scorecard courseId={courseId} />
+  }
+  
+
   return (
     <>
+      <Nav />
       <h3>Play</h3>
       <button id="find_course_button" onClick={() => {navigate("/find-course")}}>Find a course</button>
       <div className='favorite_courses_container'>
@@ -36,7 +44,13 @@ export const Play = () => {
                             <a href={course.website}>Website</a>
                             <a href={course.goolgeMaps}>Directions</a>
                             <div className="course_buttons">
-                                <button>Play</button>
+                                <button value={course.id} onClick={
+                                  (e) => {
+                                    localStorage.removeItem("current_course_playing")
+                                    localStorage.setItem("current_course_playing", e.target.value)
+                                    navigate("/scorecard")
+                                  }
+                                }>Play</button>
                             </div>
                         </div>
               )
