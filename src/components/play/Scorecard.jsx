@@ -1,10 +1,14 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { rounds } from '../ApiManager'
+import './Scorecard.css'
 
 export const Scorecard = () => {
   const navigate = useNavigate()
-  const [currentCourse, setCurrentCourse] = useState(localStorage.getItem("current_course_playing"))
+  const [currentFavoriteCourse] = useState(localStorage.getItem("current_favorite_course_playing"))
+  const [currentNonFavoriteCourse] = useState(localStorage.getItem("current_non_favorite_course_playing"))
   const [currentHole, setCurrentHole] = useState(1)
   const [currentHolePar, setCurrentHolePar] = useState(3)
   const [currentHoleDistance, setCurrentHoleDistance] = useState(200)
@@ -12,85 +16,217 @@ export const Scorecard = () => {
   const [currentRoundScore, setCurrentRoundScore] = useState(0)
   const [currentTeeShot, setCurrentTeeShot] = useState()
   const [currentGir, setCurrentGir] = useState(false)
+  const [currentPutts, setCurrentPutts] = useState(0)
+  const [completedHoles, setCompletedHoles] = useState([])
+  const parThreeTeeShotOptions = ["Long", "Left", "Green", "Right", "Short"]
+  const parFourTeeShotOptions = ["Long", "Left", "Fairway", "Right", "Short"]
+
+  const setHoleResult = () => {
+    let holeMatch = null
+    for (const hole of completedHoles) {
+      if (hole.holeNumber ===  currentHole) {
+        holeMatch = hole
+      }
+    }
+    if (holeMatch != null || currentHoleScore === 0) {
+      let currentHoleCopy = currentHole
+      currentHoleCopy += 1
+      setCurrentHole(currentHoleCopy)
+    } else {
+      const result = {
+        holeNumber: currentHole,
+        yardage: currentHoleDistance,
+        par: currentHolePar,
+        teeShot: currentTeeShot,
+        gir: currentGir,
+        putts: currentPutts,
+        score: currentHoleScore
+      }
+      let completedHolesCopy = [...completedHoles]
+      completedHolesCopy.push(result)
+      setCompletedHoles(completedHolesCopy)
+      let currentRoundScoreCopy = parseInt(currentRoundScore)
+      currentRoundScoreCopy += parseInt(currentHoleScore)
+      setCurrentRoundScore(currentRoundScoreCopy)
+      let currentHoleCopy = currentHole
+      currentHoleCopy += 1
+      setCurrentHole(currentHoleCopy)
+    }
+  }
+
+
+  const DisplayTeeShotOptions = ({holePar}) => {
+    if (holePar <= 3) {
+      return(
+        <>
+          {
+            parThreeTeeShotOptions.map(
+              (parThreeOption) => {
+                if (currentTeeShot === parThreeOption) { 
+                  return(
+                    <div key={parThreeOption}>
+                    <label >{parThreeOption}</label>
+                    <input checked type="radio" value={parThreeOption} onChange={(e) => {setCurrentTeeShot(e.target.value)}} /> 
+                    </div> 
+                  )
+                } else {
+                  return(
+                  <div key={parThreeOption}>
+                    <label >{parThreeOption}</label>
+                    <input type="radio" value={parThreeOption} onChange={(e) => {setCurrentTeeShot(e.target.value)}} />     
+                  </div>
+                  )
+                }
+              }
+              )
+          }
+        </>
+      )
+    } else {
+      return(
+        <>
+          {
+            parFourTeeShotOptions.map(
+            (parFourOption) => {
+              if (currentTeeShot === parFourOption) { 
+                return ( 
+                  <div key={parFourOption}>
+                  <label >{parFourOption}</label>
+                  <input checked type="radio" value={parFourOption} onChange={(e) => {setCurrentTeeShot(e.target.value)}} /> 
+                  </div>
+                  ) 
+                } else {
+                  return (
+                    <div key={parFourOption}>
+                    <label >{parFourOption}</label>
+                    <input type="radio" value={parFourOption} onChange={(e) => {setCurrentTeeShot(e.target.value)}} />
+                    </div>
+                    )
+                  }
+                }
+            )
+          }
+        </>
+      )
+    }
+  }
+
+  useEffect(
+    () => {
+      if (completedHoles.length > 0) {
+        let holeMatch = null
+        for (const hole of completedHoles) {
+          if (hole.holeNumber ===  currentHole) {
+            holeMatch = hole
+          }
+        }
+        if (holeMatch === null) {
+          setCurrentHoleDistance(200)
+          setCurrentHolePar(3)
+          setCurrentTeeShot("")
+          setCurrentGir(false)
+          setCurrentPutts(0)
+          setCurrentHoleScore(0)
+        } else {
+          setCurrentHoleDistance(holeMatch.yardage)
+          setCurrentHolePar(holeMatch.par)
+          setCurrentTeeShot(holeMatch.teeShot)
+          setCurrentGir(holeMatch.gir)
+          setCurrentPutts(holeMatch.putts)
+          setCurrentHoleScore(holeMatch.score)
+        }
+      }
+      // throwing warning saying that the listener needs to be completed holes
+      // eslint-disable-next-line
+    }, [currentHole]
+  )
+
+  useEffect(
+    () => {
+      let currentHoleParCopy = currentHolePar
+      setCurrentHolePar(currentHoleParCopy)
+    }, [currentHolePar]
+  )
   
-  
+  const submitRound = () => {
+    if (completedHoles.length > 0) {
+      const completedRound = {
+        userId : parseInt(localStorage.getItem("scratch_user_id")),
+        favoriteCourseId: parseInt(currentFavoriteCourse),
+        nonFavoriteCourseId : currentNonFavoriteCourse,
+        completedHoles : [...completedHoles],
+        roundScore: currentRoundScore,
+        date : new Date()
+      }
+
+      fetch(rounds, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(completedRound)
+      }
+    )
+    .then((res) => res.json())
+    .then(
+      () => {
+        localStorage.removeItem("current_favorite_course_playing")
+        localStorage.removeItem("current_non_favorite_course_playing")
+        navigate("/scores")
+      }
+    )
+
+    }
+  }
   
 
 
   return (
     <>
       <h3>Scorecard</h3>
-      <div>
+      <div id="scorecard_container">
           <p>Hole #{currentHole}</p>
+          <p>Total Score: {currentRoundScore}</p>
           <label>Yards:</label>
           <input type="number" placeholder={currentHoleDistance} value={currentHoleDistance} onChange={(e) => {setCurrentHoleDistance(e.target.value)}}></input>
           <label>Par:</label>
           <input type="number" placeholder={currentHolePar} value={currentHolePar} onChange={(e) => {setCurrentHolePar(e.target.value)}}></input>
           <div className='tee_shot'>
             <p>Tee Shot</p>
-            <div>
-              <label>Long</label>
-              <input type="radio" name="tee_shot_selector" value="Long" onChange={
-                    (e) => {
-                      setCurrentTeeShot(e.target.value)
-                    }
-                  }></input>
-            </div>
-            <div>
-              <label>Left</label>
-              <input type="radio" name="tee_shot_selector" value="Left" onChange={
-                (e) => {
-                  setCurrentTeeShot(e.target.value)
-                }
-              }></input>
+            <div className="tee_shot_options">
               {
-                currentHolePar < 4 ? 
-                <>
-                  <label>Green</label>
-                  <input type="radio"  name="tee_shot_selector" value="Green" onChange={
-                    (e) => {
-                      setCurrentTeeShot(e.target.value)
-                    }
-                  }>
-                  </input> 
-                </>
-                : 
-                <>
-                  <label>Fairway</label>
-                  <input type="radio"  name="tee_shot_selector" value="Fairway" onChange={
-                    (e) => {
-                      setCurrentTeeShot(e.target.value)
-                    }
-                  }>
-                  </input> 
-                </>
+                <DisplayTeeShotOptions holePar={currentHolePar} />
               }
-              <label>Right</label>
-              <input type="radio" name="tee_shot_selector" value="Right" onChange={
-                    (e) => {
-                      setCurrentTeeShot(e.target.value)
-                    }
-                  }></input>
-            </div>
-            <div>
-              <label>Short</label>
-              <input type="radio" name="tee_shot_selector" value="Short" onChange={
-                    (e) => {
-                      setCurrentTeeShot(e.target.value)
-                    }
-                  }></input>
             </div>
           </div>
           <div className="hole_score_results">
-              <label>GIR</label>
-              <input type="checkbox" onClick={(e) => {
-                if (e.target.checked) {
-                  setCurrentGir(true)
-                } else {
-                  setCurrentGir(false)
+              {
+                currentGir === true ?
+                <>
+                  <label>GIR</label>
+                  <input checked value={currentGir} type="checkbox" onClick={(e) => {
+                    setCurrentGir(e.target.value)
+                  }}></input>
+                </> : 
+                <>
+                  <label>GIR</label>
+                  <input value={currentGir} type="checkbox" onClick={(e) => {
+                    if (e.target.checked) {
+                      setCurrentGir(true)
+                    } else {
+                      setCurrentGir(false)
+                    }
+                  }}></input>
+                </>
+              }
+              
+              <label>Putts</label>
+              <input type="number" placeholder={currentPutts} value={currentPutts} onChange={
+                (e) => {
+                  setCurrentPutts(e.target.value)
                 }
-              }}></input>
-              <label>Strokes</label>
+              }></input>
+              <label>Score</label>
               <input type="number" placeholder={currentHoleScore} value={currentHoleScore} onChange={
                 (e) => {
                   setCurrentHoleScore(e.target.value)
@@ -108,20 +244,16 @@ export const Scorecard = () => {
             }
             {
               currentHole < 18 ? <button onClick={() => {
-                let currentHoleCopy = currentHole
-                currentHoleCopy += 1
-                setCurrentHole(currentHoleCopy)
+                
+                setHoleResult()
               }}>Next Hole</button> : ``
             }
-            {
-              currentHole === 18 ? <button onClick={() => {
-                console.log("Round Finished")
-              }}>Finish Round</button> : ``
-            }
-
           </div>
+          <button onClick={() => {submitRound()}}>Finish Round</button>
           <button onClick={
             () => {
+              localStorage.removeItem("current_favorite_course_playing")
+              localStorage.removeItem("current_non_favorite_course_playing")
               navigate("/play")
             }
           }>Exit Round</button>

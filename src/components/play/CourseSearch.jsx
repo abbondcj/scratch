@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -13,6 +14,7 @@ export const CourseSearch = () => {
     const [courseList, setCourseList] = useState([])
     const [searchCount, setSearchCount] = useState(0)
     const [receivedError, setReceivedError] = useState(false)
+    const navigate = useNavigate()
 
 
   const retrieveCourses = (latParam, longParam) => {
@@ -114,7 +116,18 @@ export const CourseSearch = () => {
                             <p id="course_name">{course.name}</p>
                             <p>{course.distance}mi from {selectedLocation}</p>
                             <div className="course_buttons">
-                                <button>Play</button>
+                                <button 
+                                value={course.name + `--` + course.zip_code}
+                                onClick={
+                                  (e) => {
+                                    localStorage.removeItem("current_favorite_course_playing")
+                                    localStorage.removeItem("current_non_favorite_course_playing")
+                                    localStorage.setItem("current_non_favorite_course_playing", e.target.value)
+                                    navigate("/scorecard")
+                                  }
+                                }>
+                                  Play
+                                </button>
                                 <button 
                                 value={course.name + '--' + course.zip_code}
                                 onClick={
@@ -122,7 +135,7 @@ export const CourseSearch = () => {
                                     prepFavoriteCourse(e.target.value)
                                     }
                                 }>
-                                    Favorite
+                                  Favorite
                                 </button>
                             </div>
                         </div>
