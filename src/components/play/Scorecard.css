@@ -1,0 +1,40 @@
+#scorecard_container {
+    align-items: center;
+    border: 2px white solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    padding: 1%;
+    min-width: fit-content;
+    max-width: 70%;
+}
+
+.tee_shot_options {
+    display: flex;
+    flex-direction: row;
+    margin: 2%;
+}
+
+.hole_score_results {
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+}
+
+#scorecard_container input {
+    border: none;
+    border-radius: 5px;
+}
+
+.hole_selector_buttons {
+    display: flex;
+}
+
+#scorecard_container button {
+    margin: 2%;
+    border: none;
+    border-radius:  5px;
+}
