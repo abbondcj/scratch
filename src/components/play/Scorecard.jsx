@@ -18,10 +18,12 @@ export const Scorecard = () => {
   const [currentGir, setCurrentGir] = useState(false)
   const [currentPutts, setCurrentPutts] = useState(0)
   const [completedHoles, setCompletedHoles] = useState([])
+  const [rating, setRating] = useState(0)
   const parThreeTeeShotOptions = ["Long", "Left", "Green", "Right", "Short"]
   const parFourTeeShotOptions = ["Long", "Left", "Fairway", "Right", "Short"]
 
   const setHoleResult = () => {
+    console.log("set Hole result called")
     let holeMatch = null
     for (const hole of completedHoles) {
       if (hole.holeNumber ===  currentHole) {
@@ -149,14 +151,20 @@ export const Scorecard = () => {
   )
   
   const submitRound = () => {
+    // if (currentHoleEdited = true) {
+    //   setHoleResult()
+    // }
+    console.log("submit round called")
     if (completedHoles.length > 0) {
-      const completedRound = {
+      let completedRound = {
         userId : parseInt(localStorage.getItem("scratch_user_id")),
         favoriteCourseId: parseInt(currentFavoriteCourse),
         nonFavoriteCourseId : currentNonFavoriteCourse,
         completedHoles : [...completedHoles],
+        holesCompleted: completedHoles.length,
         roundScore: currentRoundScore,
-        date : new Date()
+        date : new Date().toDateString(),
+        rating: rating
       }
 
       fetch(rounds, {
@@ -178,6 +186,8 @@ export const Scorecard = () => {
 
     }
   }
+
+  
   
 
 
@@ -185,6 +195,9 @@ export const Scorecard = () => {
     <>
       <h3>Scorecard</h3>
       <div id="scorecard_container">
+        {
+          currentHole < 19 ?
+          <>
           <p>Hole #{currentHole}</p>
           <p>Total Score: {currentRoundScore}</p>
           <label>Yards:</label>
@@ -239,26 +252,67 @@ export const Scorecard = () => {
                 let currentHoleCopy = currentHole
                 currentHoleCopy -= 1
                 setCurrentHole(currentHoleCopy)
-
-              }}>Previous Hole</button> : ``
+                
+              }}>Previous</button> : ``
             }
             {
-              currentHole < 18 ? <button onClick={() => {
-                
+              currentHole < 19 ? <button onClick={() => {
                 setHoleResult()
-              }}>Next Hole</button> : ``
+              }}>Next</button> : ``
+              
             }
           </div>
-          <button onClick={() => {submitRound()}}>Finish Round</button>
+          <button onClick={
+            () => {
+                if (window.confirm("Current Hole will not be added")) {
+                  submitRound()
+                  navigate("/scores")
+                }
+              }
+            }>Submit Round
+          </button>
           <button onClick={
             () => {
               localStorage.removeItem("current_favorite_course_playing")
               localStorage.removeItem("current_non_favorite_course_playing")
               navigate("/play")
             }
-          }>Exit Round</button>
+          }>Exit Round</button> 
+
+          </> : 
+          <>
+          <p>Round Rating</p>
+          <div className="rating_container">
+            {
+              [0,1,2,3,4,5].map((num) => {
+                return (
+                  <div key={num}>
+                  <label >{num}</label>
+                  <input type="radio" value={num} name="rating_options" onClick={(e) => {setRating(e.target.value)}}></input>
+                  </div>
+                )
+              })
+            }
+          </div>
+          <button onClick={
+            () => {
+              window.alert(
+                `
+                  <p>Current hole will not be added</p>
+                  <label>Yes</label>
+                  <input type="radio"></input>
+                `
+              )
+              submitRound()
+              navigate("/scores")
+              }
+            }>Submit Round
+          </button>
+          </>
+
+        }
       </div>
     </>
-  )
+    )
 }
 
