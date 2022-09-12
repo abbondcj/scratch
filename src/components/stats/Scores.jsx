@@ -1,12 +1,13 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { Nav } from '../nav/Nav'
-import { rounds } from '../ApiManager'
+import { favorite_courses, rounds } from '../ApiManager'
 import './Scores.css'
 import { useNavigate } from 'react-router-dom'
 
 export const Scores = () => {
   const [completedRounds, setCompletedRounds] = useState([])
+  const [favoriteCourses, setFavoriteCourses] = useState([])
   const [totalNineHoleRounds, setTotalNineHoleRounds] = useState("0")
   const [averageScoreNine, setAverageScoreNine] = useState("0")
   const [totalEighteenHolerounds, setTotalEighteenHoleRounds] = useState("0")
@@ -20,16 +21,16 @@ export const Scores = () => {
   const [bogeys, setBogeys] = useState(0)
   const [doubleBogeys, setDoubleBogeys] = useState(0)
   const [tripleBogeyPlus, setTripleBogeyPlus] = useState(0)
+  const [displayRoundScorecard, setDisplayScorecard] = useState(0)
   const navigate = useNavigate()
 
   useEffect(
     () => {
-      fetch(rounds)
+      fetch(rounds + `?userId=${localStorage.getItem("scratch_user_id")}`)
       .then(res => res.json())
       .then(
         (data) => {
           setCompletedRounds(data)
-          let totalRoundCounter = 0
           let nineHoleRoundCounter = 0
           let nineHoleScoreCounter = 0
           let eighteenHoleRoundCounter = 0
@@ -64,8 +65,6 @@ export const Scores = () => {
                 incompleteRoundsCopy += 1
                 setIncompleteRounds(incompleteRoundsCopy)
               }
-              // averageScoreCopy += round.roundScore
-              totalRoundCounter += 1
               round.completedHoles.map(
                 (hole) => {
                   if (hole.score === 1) {
@@ -120,6 +119,15 @@ export const Scores = () => {
     }, []
   )
 
+  useEffect(
+    () => {
+      fetch(favorite_courses + `?userId=${localStorage.getItem("scratch_user_id")}`)
+      .then(res => res.json())
+      .then((data) => {setFavoriteCourses(data)})
+    }, []
+  )
+  
+
   return (
     <>
       <Nav />
@@ -127,31 +135,31 @@ export const Scores = () => {
       <div className="stats">
         <div className="scores_totals">
           <div>
-            <p>Total 9 Hole Rounds: {totalNineHoleRounds}</p>
-            <p>Total Average Score (9 holes): {averageScoreNine}</p>
+            <p>Total 9 Hole Rounds: <br></br>{totalNineHoleRounds}</p>
+            <p>Total Average Score (9 holes): <br></br>{averageScoreNine}</p>
           </div>
           <div>
-            <p>Total 18 Hole Rounds: {totalEighteenHolerounds}</p>
-            <p>Total Average Score (18 holes): {averageScoreEighteen}</p>
+            <p>Total 18 Hole Rounds: <br></br>{totalEighteenHolerounds}</p>
+            <p>Total Average Score (18 holes): <br></br>{averageScoreEighteen}</p>
           </div>
           <div>
-            <p>Incomplete Rounds (Less than 9 holes): {incompleteRounds}</p>
+            <p>Incomplete Rounds (Less than 9 holes): <br></br>{incompleteRounds}</p>
           </div>
         </div>
         <div className="stats_totals">
           <div>
-            <p>Aces: <b>{aces}</b></p>
-            <p>Albatrosses: <b>{albatrosses}</b></p>
-            <p>Eagles: <b>{eagles}</b></p>
+            <p>Aces: <br></br>{aces}</p>
+            <p>Albatrosses: <br></br>{albatrosses}</p>
+            <p>Eagles: <br></br>{eagles}</p>
           </div>
           <div>
-            <p>Birdies: <b>{birdies}</b></p>
-            <p>Pars: <b>{pars}</b></p>
-            <p>Bogeys: <b>{bogeys}</b></p>
+            <p>Birdies: <br></br>{birdies}</p>
+            <p>Pars: <br></br>{pars}</p>
+            <p>Bogeys: <br></br>{bogeys}</p>
           </div>
           <div>
-            <p>Double Bogeys: <b>{doubleBogeys}</b></p>
-            <p>Triple+ Bogeys: <b>{tripleBogeyPlus}</b></p>
+            <p>Double Bogeys: <br></br>{doubleBogeys}</p>
+            <p>Triple+ Bogeys: <br></br>{tripleBogeyPlus}</p>
           </div>
         </div>
       </div>
@@ -160,27 +168,141 @@ export const Scores = () => {
         {
           completedRounds.length > 0 ?
           completedRounds.map((round) => {
-            if (round.nonFavoriteCourseId != null) {
-              let [courseName] = round.nonFavoriteCourseId.split("--")
-              return (
-                <div key={round.id}>
-                  <h3>{courseName}</h3>
-                  <p>Holes completed: {round.holesCompleted}</p>
-                  <p>Score: {round.roundScore}</p>
-                  <button value={round.nonFavoriteCourseId}>View scorecard</button>
-                </div>
-              )
-            } else {
-              return (
-                <div key={round.id}>
-                  <h3>Temps</h3>
-                  <p># of Holes: {round.completedHoles.length}</p>
-                  <p>Score: {round.roundScore}</p>
-                  <button value={round.favoriteCourseId}>View scorecard</button>
-                </div>
-              )
+            for (const favCourse of favoriteCourses) {
+                if (round.favoriteCourseId != null && parseInt(round.favoriteCourseId) === favCourse.id) {
+                    console.log("fav match")
+                    return (
+                        <div className="round_result" key={round.id}>
+                          <h3>{favCourse.name}</h3>
+                          <p>Date: {round.date}</p>
+                          <p># of Holes: {round.completedHoles.length}</p>
+                          <p>Score: {round.roundScore}</p>
+                          <p>Rating: {round.rating === "0" ? round.rating/5.0 : `No Rating`}</p>
+                          <div className="scorecard_display">
+                            {
+                              displayRoundScorecard === round.id ?
+                              <div className="scorecard_label">
+                                <p>Hole #</p>
+                                <p>Par</p>
+                                <p>Score</p>
+                              </div> : ``
+                            }
+                            <div>
+                              {
+                                displayRoundScorecard === round.id ?
+                                <>
+                                <div className="hole_label">
+                                  {
+                                    round.completedHoles.map((hole) => {
+                                      return (
+                                        <div key={round.id + hole.holeNumber}>
+                                          <p>{hole.holeNumber}</p>
+                                        </div>
+                                      )
+                                    })
+                                  }
+                                </div>
+                                <div className="hole_label">
+                                  {
+                                    round.completedHoles.map((hole) => {
+                                      return (
+                                        <div key={round.id + hole.holeNumber}>
+                                          <p>{hole.par}</p>
+                                        </div>
+                                      )
+                                    })
+                                  }
+                                </div>
+                                <div className="hole_label">
+                                  {
+                                    round.completedHoles.map((hole) => {
+                                      return (
+                                        <div key={round.id + hole.holeNumber}>
+                                          <p>{hole.score}</p>
+                                        </div>
+                                      )
+                                    })
+                                  }
+                                </div>
+                                <button onClick={() => {setDisplayScorecard(0)}}>Close scorecard</button>
+                                </>
+                                :
+                                <button value={round.id} onClick={(e) => {setDisplayScorecard(parseInt(e.target.value))}}>View scorecard</button>                            
+                              }
+                            </div>
+                          </div>                      
+                        </div>
+                    )
+                } 
+    
+                if (round.favoriteCourseId === null) {
+                    console.log("no fav match")
+                    let [courseName] = round.nonFavoriteCourseId.split("--")
+                    return (
+                        <div className="round_result" key={round.id}>
+                          <h3>{courseName}</h3>
+                          <p>Date: {round.date}</p>
+                          <p>Holes completed: {round.holesCompleted}</p>
+                          <p>Score: {round.roundScore}</p>
+                          <p>Rating: {round.rating === "0" ? round.rating/5.0 : `No Rating`}</p>
+                          <div className="scorecard_display">
+                            {
+                              displayRoundScorecard === round.id ?
+                              <div className="scorecard_label">
+                                <p>Hole #</p>
+                                <p>Par</p>
+                                <p>Score</p>
+                              </div> : ``
+                            }
+                            <div>
+                              {
+                                displayRoundScorecard === round.id ?
+                                <>
+                                <div className="hole_label">
+                                  {
+                                    round.completedHoles.map((hole) => {
+                                      return (
+                                        <div key={round.id + hole.holeNumber}>
+                                          <p>{hole.holeNumber}</p>
+                                        </div>
+                                      )
+                                    })
+                                  }
+                                </div>
+                                <div className="hole_label">
+                                  {
+                                    round.completedHoles.map((hole) => {
+                                      return (
+                                        <div key={round.id + hole.holeNumber}>
+                                          <p>{hole.par}</p>
+                                        </div>
+                                      )
+                                    })
+                                  }
+                                </div>
+                                <div className="hole_label">
+                                  {
+                                    round.completedHoles.map((hole) => {
+                                      return (
+                                        <div key={round.id + hole.holeNumber}>
+                                          <p>{hole.score}</p>
+                                        </div>
+                                      )
+                                    })
+                                  }
+                                </div>
+                                <button onClick={() => {setDisplayScorecard(0)}}>Close scorecard</button>
+                                </>
+                                :
+                                <button value={round.id} onClick={(e) => {setDisplayScorecard(parseInt(e.target.value))}}>View scorecard</button>                            
+                              }
+                            </div>
+                          </div>                      
+                        </div>
+                    )
+                }
             }
-          }) : <button onClick={() => {navigate("/play")}}>Play Round</button>
+        }) : <button onClick={() => {navigate("/play")}}>Play</button>
         }
       </div>
     </>

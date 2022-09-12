@@ -28,7 +28,7 @@ export const Play = () => {
       <button id="find_course_button" onClick={() => {navigate("/find-course")}}>Find a course</button>
       <div className='favorite_courses_container'>
       {
-          favoriteCourseList.length > 1 ? 
+          favoriteCourseList.length > 0 ? 
           favoriteCourseList.map(
             (course) => {
               return (
