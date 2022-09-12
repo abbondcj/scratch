@@ -5,7 +5,7 @@
 
 .scores_totals {
     align-items: center;
-    border: 1px solid black;
+    border: 2px white solid;
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
@@ -16,7 +16,7 @@
 
 .stats_totals {
     align-items: center;
-    border: 1px solid black;
+    border: 2px white solid;
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
@@ -26,9 +26,49 @@
 }
 
 .stats p {
-    border: 1px solid black;
-    border-radius: 5px;
+    margin: 2%;
+    padding: 2%;
+    text-align: center;
+}
+
+.completed_rounds_container {
     display: flex;
-    flex-wrap: wrap;
-    padding: 1%;
+    flex-direction: column;
+}
+
+.round_result {
+align-items: center;
+border: 2px white solid;
+border-radius: 5px;
+display: flex;
+flex-direction: column;
+margin-left: 15%;
+margin-right: 15%;
+margin-top: 2%;
+margin-bottom: 2%;
+min-width: fit-content;
+padding: 2%;
+}
+
+.scorecard_display {
+display: flex;
+}
+
+.hole_label {
+column-gap: 3px;
+display: flex;
+justify-content: space-evenly;
+}
+ 
+ 
+.scorecard_display p {
+    border: 1px white solid;
+    max-width: 200px;
+    width: auto;
+    min-width: 40px;
+}
+    
+.scorecard_label p {
+    min-width: 50px;
+    margin-right: 5px;
 }
