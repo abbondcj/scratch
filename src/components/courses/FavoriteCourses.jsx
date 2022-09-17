@@ -11,7 +11,6 @@ const addFavoriteCourse = (coursObj) => {
     name : coursObj.course_details.result.name ? coursObj.course_details.result.name : "",
     address : coursObj.course_details.result.formatted_address ? coursObj.course_details.result.formatted_address : "",
     phone : coursObj.course_details.result.formatted_phone_number ? coursObj.course_details.result.formatted_phone_number : "",
-    hours : coursObj.course_details.result.opening_hours.weekday_text.length > 1 ? coursObj.course_details.result.opening_hours.weekday_text : "",
     photos : coursObj.course_details.result.photos.length > 1 ? coursObj.course_details.result.photos : "",
     rating : coursObj.course_details.result.rating ? coursObj.course_details.result.rating : "",
     goolgeMaps : coursObj.course_details.result.url ? coursObj.course_details.result.url : "",
@@ -46,14 +45,36 @@ export const prepFavoriteCourse = (rawData) => {
     .then(response => response.json())
     .then(
       (data) => {
-        addFavoriteCourse(data)
+        if (data.course_details.result.permanently_closed) {
+          window.alert("course is permanently closed")
+        } else {
+          addFavoriteCourse(data)
+        }
       }
     )
 }
 
+
 export const Courses = () => {
   const [favoriteCourseList, setFavoriteCourseList] = useState([])
+  const [favoriteListEdited, setFavoriteListEdited] = useState(false)
   const navigate = useNavigate()
+  
+  const removeFavorite = (id) => {
+    fetch(favorite_courses + `/?id=${id}`)
+    .then(res => res.json())
+    .then((data) => {
+      const course = {...data[0]}
+      fetch(favorite_courses + `/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(course)
+        })
+        setFavoriteListEdited(!favoriteListEdited)
+    })
+  }
 
   useEffect(
     () => {
@@ -64,7 +85,7 @@ export const Courses = () => {
           setFavoriteCourseList(data)
         }
       )
-    }, []
+    }, [favoriteListEdited]
   )
   
   
@@ -91,10 +112,10 @@ export const Courses = () => {
                             <div className="course_buttons">
                                 <button>Play</button>
                                 <button 
-                                value={course.name + '--' + course.zip_code}
+                                value={course.id}
                                 onClick={
                                     (e) => {
-                                    console.log("un-favorite")
+                                      removeFavorite(e.target.value)
                                     }
                                 }>
                                     Remove

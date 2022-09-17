@@ -1,21 +1,37 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
-import { gc_header } from "../ApiManager";
+import { favorite_courses, gc_header } from "../ApiManager";
 import { prepFavoriteCourse } from "../courses/FavoriteCourses";
 import { Nav } from "../nav/Nav";
 import './CourseSearch.css'
 
 export const CourseSearch = () => {
-    const [selectedLocation, setSelectedLocation] = useState("")
-    const [courseList, setCourseList] = useState([])
-    const [searchCount, setSearchCount] = useState(0)
-    const [receivedError, setReceivedError] = useState(false)
-    const navigate = useNavigate()
+  const [selectedLocation, setSelectedLocation] = useState("")
+  const [courseList, setCourseList] = useState([])
+  const [favoriteCourses, setFavoriteCourses] = useState([])
+  const [searchCount, setSearchCount] = useState(0)
+  const [receivedError, setReceivedError] = useState(false)
+  const [addedFavorite, setAddedFavorite] = useState(false)
+  const navigate = useNavigate()
 
+  useEffect(
+    () => {
+      fetch(favorite_courses + `?userId=${localStorage.getItem("scratch_user_id")}`)
+      .then(res => res.json())
+      .then(
+        (data) => {
+          const favoriteCourseList = data.map(course => course)
+          setFavoriteCourses(favoriteCourseList)
+        }
+      )
+    }, [addedFavorite])
+    
+  
 
   const retrieveCourses = (latParam, longParam) => {
     const lat = latParam
@@ -87,6 +103,11 @@ export const CourseSearch = () => {
       );
     });
 
+   const handleFavorite = (value) => {
+    setAddedFavorite(!addedFavorite)
+    prepFavoriteCourse(value)
+   }
+
   return (
     <>
     <Nav />
@@ -128,15 +149,27 @@ export const CourseSearch = () => {
                                 }>
                                   Play
                                 </button>
-                                <button 
-                                value={course.name + '--' + course.zip_code}
-                                onClick={
-                                    (e) => {
-                                    prepFavoriteCourse(e.target.value)
-                                    }
-                                }>
-                                  Favorite
-                                </button>
+                                {
+                                  favoriteCourses.some(favCourse => favCourse.name.includes(course.name)) ?
+                                  <button 
+                                    value={course.name + '--' + course.zip_code}
+                                    onClick={
+                                      (e) => {
+                                        console.log("unfavorited")
+                                      }
+                                  }>
+                                    Unfavorite
+                                  </button> :
+                                  <button 
+                                    value={course.name + '--' + course.zip_code}
+                                    onClick={
+                                      (e) => {
+                                        handleFavorite(e.target.value)
+                                      }
+                                  }>
+                                    Favorite
+                                  </button>
+                                }
                             </div>
                         </div>
                     )
