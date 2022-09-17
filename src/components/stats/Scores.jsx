@@ -95,7 +95,7 @@ export const Scores = () => {
           } else {
             averageEighteenHoleScoreCopy = eighteenHoleScoreCounter / eighteenHoleRoundCounter
             setAverageScoreEighteen(averageEighteenHoleScoreCopy)
-            setTotalEighteenHoleRounds(eighteenHoleRoundCounter.toFixed(2))
+            setTotalEighteenHoleRounds(eighteenHoleRoundCounter.toFixed(0))
           }
           if (nineHoleRoundCounter === 0) {
             setAverageScoreNine(0)
@@ -103,7 +103,7 @@ export const Scores = () => {
           } else {
             averageNineHoleScoreCopy = nineHoleScoreCounter / nineHoleRoundCounter
             setAverageScoreNine(averageNineHoleScoreCopy)
-            setTotalNineHoleRounds(nineHoleRoundCounter.toFixed(2))
+            setTotalNineHoleRounds(nineHoleRoundCounter.toFixed(0))
           }
           setAces(aceCopy)
           setAlbatrosses(albatrossCopy)
