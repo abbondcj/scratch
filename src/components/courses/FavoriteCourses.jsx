@@ -5,7 +5,7 @@ import { favorite_courses } from '../ApiManager'
 import { Nav } from '../nav/Nav'
 import './FavoriteCourse.css'
 
-const addFavoriteCourse = (coursObj) => {
+export const addFavoriteCourse = (coursObj) => {
   const courseInfoCopy = {
     userId : parseInt(localStorage.getItem("scratch_user_id")),
     name : coursObj.course_details.result.name ? coursObj.course_details.result.name : "",
@@ -29,31 +29,6 @@ const addFavoriteCourse = (coursObj) => {
   })
 }
 
-export const prepFavoriteCourse = (rawData) => {
-  const rawCourseData = rawData.split("--")
-  let rawCourseName = rawCourseData[0]
-  let rawCourseZipCode = rawCourseData[1]
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '4a7a12f70bmsh354c4e76be8cdf6p1b69d3jsnf8c18f063789',
-      'X-RapidAPI-Host': 'golf-course-finder.p.rapidapi.com'
-    }
-  };
-  
-  fetch(`https://golf-course-finder.p.rapidapi.com/course/details?zip=${rawCourseZipCode}&name=${rawCourseName}`, options)
-    .then(response => response.json())
-    .then(
-      (data) => {
-        if (data.course_details.result.permanently_closed) {
-          window.alert("course is permanently closed")
-        } else {
-          addFavoriteCourse(data)
-        }
-      }
-    )
-}
-
 
 export const Courses = () => {
   const [favoriteCourseList, setFavoriteCourseList] = useState([])
@@ -61,19 +36,15 @@ export const Courses = () => {
   const navigate = useNavigate()
   
   const removeFavorite = (id) => {
-    fetch(favorite_courses + `/?id=${id}`)
-    .then(res => res.json())
-    .then((data) => {
-      const course = {...data[0]}
-      fetch(favorite_courses + `/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(course)
-        })
-        setFavoriteListEdited(!favoriteListEdited)
-    })
+      fetch(favorite_courses + `/${id}`, 
+        {
+          method: "DELETE"
+        }
+      )
+      .then(
+        () => {
+          setFavoriteListEdited(prev => !prev)
+      })  
   }
 
   useEffect(
