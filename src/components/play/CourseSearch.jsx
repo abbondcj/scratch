@@ -6,12 +6,14 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 import { favorite_courses, gc_header } from "../ApiManager";
-import { prepFavoriteCourse } from "../courses/FavoriteCourses";
+import { addFavoriteCourse } from "../courses/FavoriteCourses";
 import { Nav } from "../nav/Nav";
 import './CourseSearch.css'
 
 export const CourseSearch = () => {
   const [selectedLocation, setSelectedLocation] = useState("")
+  const [chosenLat, setChosenLat] = useState("")
+  const [chosenLong, setChosenLong] = useState("")
   const [courseList, setCourseList] = useState([])
   const [favoriteCourses, setFavoriteCourses] = useState([])
   const [searchCount, setSearchCount] = useState(0)
@@ -29,13 +31,45 @@ export const CourseSearch = () => {
           setFavoriteCourses(favoriteCourseList)
         }
       )
-    }, [addedFavorite])
+    }, [courseList]
+  )
     
   
+  const prepFavoriteCourse = (rawData) => {
+    const rawCourseData = rawData.split("--")
+    let rawCourseName = rawCourseData[0]
+    let rawCourseZipCode = rawCourseData[1]
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '4a7a12f70bmsh354c4e76be8cdf6p1b69d3jsnf8c18f063789',
+        'X-RapidAPI-Host': 'golf-course-finder.p.rapidapi.com'
+      }
+    };
+    
+    fetch(`https://golf-course-finder.p.rapidapi.com/course/details?zip=${rawCourseZipCode}&name=${rawCourseName}`, options)
+      .then(response => response.json())
+      .then(
+        (data) => {
+          if (data.course_details.result.permanently_closed) {
+            window.alert("course is permanently closed")
+          } else {
+            addFavoriteCourse(data)
+          }
+        }
+      )
+      .then(
+        () => {
+          setCourseList(prev => [...prev])
+        }
+      )
+  }
 
   const retrieveCourses = (latParam, longParam) => {
     const lat = latParam
     const long = longParam
+    setChosenLat(lat.toString())
+    setChosenLong(long.toString())
     const radius = "10"
     const options = {
         method: 'GET',
@@ -53,7 +87,7 @@ export const CourseSearch = () => {
             }
         )
         .catch((err) => {if (err) {setReceivedError(true)}});
-}
+  }
 
   const {
     value,
@@ -89,7 +123,7 @@ export const CourseSearch = () => {
       });
     };
 
-    const renderSuggestions = () =>
+  const renderSuggestions = () =>
     data.map((suggestion) => {
       const {
         place_id,
@@ -103,10 +137,9 @@ export const CourseSearch = () => {
       );
     });
 
-   const handleFavorite = (value) => {
-    setAddedFavorite(!addedFavorite)
-    prepFavoriteCourse(value)
-   }
+  const handleFavorite = (value) => {
+    prepFavoriteCourse(value)  
+  }
 
   return (
     <>
@@ -125,7 +158,7 @@ export const CourseSearch = () => {
     </div>
     <div>
       <div className="course_list_container">
-            {receivedError? <p>City not found</p> : ``}
+            {chosenLat.length > 0 && receivedError ? <p>City not found</p> : ``}
             {
                 courseList.length >= 1 ? <h4>Courses within 10mi of {selectedLocation}</h4> : ``
             }
@@ -176,7 +209,7 @@ export const CourseSearch = () => {
                 }) : ``
             }
             {
-              receivedError ? <p>No courses near {selectedLocation}</p> : ``
+              chosenLat.length > 0 && receivedError ? <p>No courses near {selectedLocation}</p> : ``
             }
         </div>
     </div>
