@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Nav } from '../nav/Nav'
+import './Dashboard.css'
 
 export const Dashboard = () => {
   const navigate = useNavigate()
@@ -9,37 +10,32 @@ export const Dashboard = () => {
       <Nav />
       <h3>Welcome to Scratch</h3>
       <div className="scratch_intro">
-        <p>What is Scratch?</p>
-        <ul>
-          <li>
+          <p>
             A new course finder
-          </li>
-          <li>
+          </p>
+          <p>
             An electronic scorecard
-          </li>
-          <li>
+          </p>
+          <p>
             A way to improve your golf game!
-          </li>
-        </ul>
+          </p>
       </div>
 
       <div className="scratch_how">
-        <p>How it works</p>
-        <ul>
-          <li>
+        <h3>How it works</h3>
+          <p>
             Select 'Play' to start a new round
-          </li>
-          <li>
-            Add new courses to your favorites list 
-          </li>
-          <li>
+          </p>
+          <p>
+            Add new courses to your favorites pst 
+          </p>
+          <p>
             Enter in your scorecard results
-          </li>
-          <li>
+          </p>
+          <p>
             Submit the round and track your stats!
-          </li>
-          <button onClick={() => {navigate("/play")}}>Go play!</button>
-        </ul>
+          </p>
+          <button id="dashboard_play" onClick={() => {navigate("/play")}}>Go play!</button>
       </div>  
     </>
   )

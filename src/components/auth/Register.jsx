@@ -82,7 +82,7 @@ export const Register = () => {
         .then((res) => res.json())
         .then((newUser) => {
             localStorage.setItem("scratch_user_id", newUser.id)
-            navigate("/")
+            navigate("/home")
         })
     }
 
@@ -387,7 +387,7 @@ export const Register = () => {
                         type='number' 
                         placeholder='Rounds per month' 
                     />
-                    <label>Average score</label>
+                    <label>Average score (18 holes)</label>
                     <input 
                         onChange={
                             (e) => {

@@ -135,31 +135,31 @@ export const Scores = () => {
       <div className="stats">
         <div className="scores_totals">
           <div>
-            <p>Total 9 Hole Rounds: <br></br>{totalNineHoleRounds}</p>
-            <p>Total Average Score (9 holes): <br></br>{averageScoreNine}</p>
+            <p><b>Total 9 Hole Rounds:</b> <br></br>{totalNineHoleRounds}</p>
+            <p><b>Total Average Score (9 holes):</b> <br></br>{averageScoreNine}</p>
           </div>
           <div>
-            <p>Total 18 Hole Rounds: <br></br>{totalEighteenHolerounds}</p>
-            <p>Total Average Score (18 holes): <br></br>{averageScoreEighteen}</p>
+            <p><b>Total 18 Hole Rounds:</b> <br></br>{totalEighteenHolerounds}</p>
+            <p><b>Total Average Score (18 holes):</b> <br></br>{averageScoreEighteen}</p>
           </div>
           <div>
-            <p>Incomplete Rounds (Less than 9 holes): <br></br>{incompleteRounds}</p>
+            <p><b>Incomplete Rounds (Less than 9 holes):</b> <br></br>{incompleteRounds}</p>
           </div>
         </div>
         <div className="stats_totals">
           <div>
-            <p>Aces: <br></br>{aces}</p>
-            <p>Albatrosses: <br></br>{albatrosses}</p>
-            <p>Eagles: <br></br>{eagles}</p>
+            <p><b>Aces:</b> <br></br>{aces}</p>
+            <p><b>Albatrosses:</b> <br></br>{albatrosses}</p>
+            <p><b>Eagles:</b> <br></br>{eagles}</p>
           </div>
           <div>
-            <p>Birdies: <br></br>{birdies}</p>
-            <p>Pars: <br></br>{pars}</p>
-            <p>Bogeys: <br></br>{bogeys}</p>
+            <p><b>Birdies:</b> <br></br>{birdies}</p>
+            <p><b>Pars:</b> <br></br>{pars}</p>
+            <p><b>Bogeys:</b> <br></br>{bogeys}</p>
           </div>
           <div>
-            <p>Double Bogeys: <br></br>{doubleBogeys}</p>
-            <p>Triple+ Bogeys: <br></br>{tripleBogeyPlus}</p>
+            <p><b>Double Bogeys:</b> <br></br>{doubleBogeys}</p>
+            <p><b>Triple+ Bogeys:</b> <br></br>{tripleBogeyPlus}</p>
           </div>
         </div>
       </div>
@@ -302,7 +302,7 @@ export const Scores = () => {
                     )
                 }
             }
-        }) : <button onClick={() => {navigate("/play")}}>Play</button>
+        }) : <button id="play_button" onClick={() => {navigate("/play")}}>Play</button>
         }
       </div>
     </>

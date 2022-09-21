@@ -51,15 +51,7 @@ export const Play = () => {
               )
             }
           ) : 
-          <button 
-            onClick={
-              () => {
-                navigate("/find-course")
-              }
-            }
-          >
-            Add Courses
-          </button>
+          ``
         }
       </div>
     </>
