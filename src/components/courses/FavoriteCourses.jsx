@@ -11,22 +11,18 @@ export const addFavoriteCourse = (coursObj) => {
     name : coursObj.course_details.result.name ? coursObj.course_details.result.name : "",
     address : coursObj.course_details.result.formatted_address ? coursObj.course_details.result.formatted_address : "",
     phone : coursObj.course_details.result.formatted_phone_number ? coursObj.course_details.result.formatted_phone_number : "",
-    photos : coursObj.course_details.result.photos.length > 1 ? coursObj.course_details.result.photos : "",
     rating : coursObj.course_details.result.rating ? coursObj.course_details.result.rating : "",
     goolgeMaps : coursObj.course_details.result.url ? coursObj.course_details.result.url : "",
     website : coursObj.course_details.result.website ? coursObj.course_details.result.website : ""
   }
   fetch(favorite_courses, {
     method: "POST",
-            headers: {
-              "Content-type": "application/json"
-            },
-            body: JSON.stringify(courseInfoCopy)
-          }
-        )
-        .then((res) => res.json())
-        .then((data) => {
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify(courseInfoCopy)
   })
+  .then((res) => res.json())
 }
 
 
@@ -35,16 +31,14 @@ export const Courses = () => {
   const [favoriteListEdited, setFavoriteListEdited] = useState(false)
   const navigate = useNavigate()
   
-  const removeFavorite = (id) => {
-      fetch(favorite_courses + `/${id}`, 
-        {
-          method: "DELETE"
-        }
-      )
-      .then(
-        () => {
-          setFavoriteListEdited(prev => !prev)
-      })  
+  const removeFavorite = async (id) => {
+    await fetch(favorite_courses + `/${id}`, {
+      method: "DELETE"})
+    .then(
+      () => {
+        setFavoriteListEdited(prev => !prev)
+        return
+    })  
   }
 
   useEffect(
@@ -66,7 +60,6 @@ export const Courses = () => {
     <>
       <Nav />
       <h3>Favorite Courses</h3>
-      <button id="find_course_button" onClick={() => {navigate("/find-course")}}>Find a course</button>
       <div className="favorite_courses_container">
         {
           favoriteCourseList.length > 0 ? 
@@ -96,7 +89,7 @@ export const Courses = () => {
               )
             }
           ) : 
-          <button onClick={() => {navigate("/find-course")}}>Add Courses</button>
+          <button id="add_course_button" onClick={() => {navigate("/find-course")}}>Add Courses</button>
         }
       </div>
     </>

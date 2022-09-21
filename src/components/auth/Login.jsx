@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { users } from '../ApiManager'
 import './Login.css'
@@ -7,6 +8,14 @@ export const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
+
+    useEffect(
+        () => {
+            if (localStorage.getItem("scratch_user_id")) {
+                navigate("/home")
+            }
+        }, []
+    )
 
     const existingUserCheck = (username) => {
         return (

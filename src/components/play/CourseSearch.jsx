@@ -7,7 +7,6 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 import { favorite_courses, gc_header } from "../ApiManager";
 import { addFavoriteCourse } from "../courses/FavoriteCourses";
-import { Nav } from "../nav/Nav";
 import './CourseSearch.css'
 
 export const CourseSearch = () => {
@@ -143,7 +142,6 @@ export const CourseSearch = () => {
 
   return (
     <>
-    <Nav />
     <div className="find_course_container">
       <input
         id = "user_city_input"

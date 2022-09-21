@@ -16,22 +16,22 @@ export const Profile = () => {
           setUser(data)
         }
       )
-    }
+    },[]
   )
   return (
     <>
       <Nav />
       <h3>Profile</h3>
       <div className="user_profile">
+        <p><b>Name:</b></p>
         <p>{user.firstName} {user.lastName}</p>
-        <p></p>
+        <p><b>Email:</b></p>
         <p>{user.email}</p>
+        <p><b>Location:</b></p>
         <p>{user.city}, {user.state}</p>
-        <p>Home Course:</p>
+        <p><b>Home Course:</b></p>
         <p>{user.homeCourse}</p>
-        <p>Handicap:</p>
-        <p>{user.handicap}</p>
-        <p>Create Date:</p>
+        <p><b>Create Date:</b></p>
         <p>{user.createDate}</p>
       </div>
     </>
