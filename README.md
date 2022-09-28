@@ -1,6 +1,6 @@
 # Welcome to Scratch
 
-This project was built by Chris Abbondandelo as a way for golfers to find new courses, have a digital scorecard, and keep track of their stats to improve their game
+This project was built by Chris Abbondandelo as a way for golfers to find new courses, have a digital scorecard, and keep track of their stats to improve their game. Keep in mind this is an ongoing project :)
 
 ## In order to run this app on your machine...
 
@@ -39,6 +39,8 @@ Run the following command in the terminal 'npm start'
 If you are not rendering a list of cities/courses when searching, check your API keys for errors or unwanted whitespaces and that they have the correct access in the Google Developer Console
 
 If you are not able to perform CRUD operations check to see that your database is live at http://localhost:9000/
+
+Some of the course data is not accurate within the scope of the free API subscription and may cause a bug to happen when favoriting courses and the re-rendering of the favorite buttons
 
 ## Motivation
 The main reason I created this app was to explore the use of public API's, and also becasue I need to improve my golf game.  This project presented many challenges and head-scratchers, I am very proud of what I have created so far. I plan to improve to projects statistical tracking and implement a .NET Web API to store data. Thank you for taking a peek at something I worked hard on!
