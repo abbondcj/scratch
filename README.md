@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Welcome to Scratch
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was built by Chris Abbondandelo as a way for golfers to find new courses, have a digital scorecard, and keep track of their stats to improve their game
 
-## Available Scripts
+## In order to run this app on your machine...
 
-In the project directory, you can run:
+### Google Places/Autocomplete API
+You will need to create a google developer account and enable the Google Maps JavaScript API and the Google Places API
 
-### `npm start`
+https://console.cloud.google.com
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Create an API key that is linked to the following Google API services
+- Google Maps JavaScript API
+- Goolge Places API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+In the index.html file under the projects Public folder, replace the marked line for personal API key on line 8 marked (***INSERT GOOGLE MAPS API KEY HERE!!! ****)
 
-### `npm test`
+### Rapid API - Golf Course Finder
+You will need to create a free account with Rapid API in order to access the free "Golf Course Finder" API
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://rapidapi.com/golfambit-golfambit-default/api/golf-course-finder
 
-### `npm run build`
+In the APIManager.js file under the projects Components folder, replace the marked line for personal API Key on line 8 marked (***INSERT RAPID API KEY HERE!!! ****)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Local JSON Database
+You will need to install json-server in the project root folder using `npm i --save json-server`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+CD in to the project's 'API' folder and run the following command in the terminal
+- npx json-server --watch database.json -p 9000
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Starting the application
+You will need to open a new terminal window and CD into the project root folder
 
-### `npm run eject`
+Run the following command in the terminal 'npm start'
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Issues
+If you are not rendering a list of cities/courses when searching, check your API keys for errors or unwanted whitespaces and that they have the correct access in the Google Developer Console
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you are not able to perform CRUD operations check to see that your database is live at http://localhost:9000/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Motivation
+The main reason I created this app was to explore the use of public API's, and also becasue I need to improve my golf game.  This project presented many challenges and head-scratchers, I am very proud of what I have created so far. I plan to improve to projects statistical tracking and implement a .NET Web API to store data. Thank you for taking a peek at something I worked hard on!
