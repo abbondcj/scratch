@@ -23,7 +23,6 @@ export const Scorecard = () => {
   const parFourTeeShotOptions = ["Long", "Left", "Fairway", "Right", "Short"]
 
   const setHoleResult = () => {
-    console.log("set Hole result called")
     let holeMatch = null
     for (const hole of completedHoles) {
       if (hole.holeNumber ===  currentHole) {
@@ -138,8 +137,7 @@ export const Scorecard = () => {
           setCurrentHoleScore(holeMatch.score)
         }
       }
-      // throwing warning saying that the listener needs to be completed holes
-      // eslint-disable-next-line
+    
     }, [currentHole]
   )
 
@@ -151,10 +149,7 @@ export const Scorecard = () => {
   )
   
   const submitRound = () => {
-    // if (currentHoleEdited = true) {
-    //   setHoleResult()
-    // }
-    console.log("submit round called")
+    
     if (completedHoles.length > 0) {
       let completedRound = {
         userId : parseInt(localStorage.getItem("scratch_user_id")),
