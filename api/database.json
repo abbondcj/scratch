@@ -28,26 +28,6 @@
       "goolgeMaps": "https://maps.google.com/?cid=935579379758880547",
       "website": "http://www.nashborogolf.com/",
       "id": 1
-    },
-    {
-      "userId": 1,
-      "name": "Richland Country Club",
-      "address": "1 Club Dr, Nashville, TN 37215, USA",
-      "phone": "(615) 370-0030",
-      "rating": 4.8,
-      "goolgeMaps": "https://maps.google.com/?cid=15926592534991451327",
-      "website": "http://www.richlandcc.com/",
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "name": "Percy Warner Golf Course",
-      "address": "1221 Forrest Park Dr, Nashville, TN 37205, USA",
-      "phone": "(615) 352-9958",
-      "rating": 4.4,
-      "goolgeMaps": "https://maps.google.com/?cid=11076363186213890795",
-      "website": "http://www.nashville.gov/Parks-and-Recreation/Golf-Courses/Percy-Warner-Golf-Course.aspx",
-      "id": 3
     }
   ],
   "rounds": [
