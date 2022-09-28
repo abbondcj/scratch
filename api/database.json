@@ -16,112 +16,141 @@
       "handicapGoal": "9",
       "createDate": "Mon Aug 08 2022",
       "id": 1
-    },
-    {
-      "firstName": "Erin",
-      "lastName": "Toney",
-      "username": "erintoney",
-      "email": "elt928@mail.com",
-      "password": "Ilovec",
-      "city": "Forest",
-      "state": "VA",
-      "homeCourse": "Colonial Hils",
-      "roundsPerMonth": "20",
-      "averageScore": "1",
-      "handicap": "-1",
-      "averageScoreGoal": "1",
-      "handicapGoal": "0",
-      "createDate": "Sat Aug 13 2022",
-      "id": 6
-    },
-    {
-      "firstName": "Erin",
-      "lastName": "Toney",
-      "username": "ETGolf",
-      "email": "elt@mail.com",
-      "password": "eandc",
-      "city": "Lynchburg",
-      "state": "VA",
-      "homeCourse": "Colonial Hills GC",
-      "roundsPerMonth": "1",
-      "averageScore": "75",
-      "handicap": "3",
-      "averageScoreGoal": "72",
-      "handicapGoal": "0",
-      "createDate": "Tue Sep 20 2022",
-      "id": 7
-    },
-    {
-      "firstName": "Craig",
-      "lastName": "Abbey",
-      "username": "crabbey",
-      "email": "craig@mail.com",
-      "password": "cja12297",
-      "city": "",
-      "state": "",
-      "homeCourse": "",
-      "roundsPerMonth": "",
-      "averageScore": "",
-      "handicap": "",
-      "averageScoreGoal": "",
-      "handicapGoal": "",
-      "createDate": "Tue Sep 20 2022",
-      "id": 8
-    },
-    {
-      "firstName": "Tina",
-      "lastName": "Abbey",
-      "username": "tabbey",
-      "email": "tina@mail.com",
-      "password": "marion",
-      "city": "",
-      "state": "",
-      "homeCourse": "",
-      "roundsPerMonth": "",
-      "averageScore": "",
-      "handicap": "",
-      "averageScoreGoal": "",
-      "handicapGoal": "",
-      "createDate": "Tue Sep 20 2022",
-      "id": 9
-    },
-    {
-      "firstName": "Chuck",
-      "lastName": "Lukacs",
-      "username": "chuckle",
-      "email": "chuck@mail.com",
-      "password": "chuck",
-      "city": "Heathesville",
-      "state": "VA",
-      "homeCourse": "",
-      "roundsPerMonth": "",
-      "averageScore": "",
-      "handicap": "",
-      "averageScoreGoal": "",
-      "handicapGoal": "",
-      "createDate": "Tue Sep 20 2022",
-      "id": 10
-    },
-    {
-      "firstName": "Ryan",
-      "lastName": "Postig",
-      "username": "postig",
-      "email": "stig@mail.com",
-      "password": "stig",
-      "city": "",
-      "state": "",
-      "homeCourse": "",
-      "roundsPerMonth": "",
-      "averageScore": "",
-      "handicap": "",
-      "averageScoreGoal": "",
-      "handicapGoal": "",
-      "createDate": "Tue Sep 20 2022",
-      "id": 11
     }
   ],
-  "favoriteCourses": [],
-  "rounds": [],
+  "favoriteCourses": [
+    {
+      "userId": 1,
+      "name": "Nashboro Golf Club",
+      "address": "1101 Nashboro Blvd, Nashville, TN 37217, USA",
+      "phone": "(615) 367-2311",
+      "rating": 3.5,
+      "goolgeMaps": "https://maps.google.com/?cid=935579379758880547",
+      "website": "http://www.nashborogolf.com/",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "name": "Richland Country Club",
+      "address": "1 Club Dr, Nashville, TN 37215, USA",
+      "phone": "(615) 370-0030",
+      "rating": 4.8,
+      "goolgeMaps": "https://maps.google.com/?cid=15926592534991451327",
+      "website": "http://www.richlandcc.com/",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "name": "Percy Warner Golf Course",
+      "address": "1221 Forrest Park Dr, Nashville, TN 37205, USA",
+      "phone": "(615) 352-9958",
+      "rating": 4.4,
+      "goolgeMaps": "https://maps.google.com/?cid=11076363186213890795",
+      "website": "http://www.nashville.gov/Parks-and-Recreation/Golf-Courses/Percy-Warner-Golf-Course.aspx",
+      "id": 3
+    }
+  ],
+  "rounds": [
+    {
+      "userId": 1,
+      "favoriteCourseId": 1,
+      "nonFavoriteCourseId": "Nashboro Golf Club--37217",
+      "completedHoles": [
+        {
+          "holeNumber": 1,
+          "yardage": 200,
+          "par": 3,
+          "teeShot": "Right",
+          "gir": false,
+          "putts": "1",
+          "score": "3"
+        },
+        {
+          "holeNumber": 2,
+          "yardage": "430",
+          "par": "4",
+          "teeShot": "Fairway",
+          "gir": true,
+          "putts": "2",
+          "score": "4"
+        }
+      ],
+      "holesCompleted": 2,
+      "roundScore": 7,
+      "date": "Tue Sep 27 2022",
+      "rating": 0,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "favoriteCourseId": null,
+      "nonFavoriteCourseId": "Huntington Country Club--11743",
+      "completedHoles": [
+        {
+          "holeNumber": 1,
+          "yardage": 200,
+          "par": 3,
+          "teeShot": "Green",
+          "gir": false,
+          "putts": "2",
+          "score": "4"
+        },
+        {
+          "holeNumber": 2,
+          "yardage": "205",
+          "par": "3",
+          "teeShot": "Green",
+          "gir": true,
+          "putts": "1",
+          "score": "2"
+        },
+        {
+          "holeNumber": 3,
+          "yardage": "403",
+          "par": "4",
+          "teeShot": "Right",
+          "gir": false,
+          "putts": "1",
+          "score": "5"
+        }
+      ],
+      "holesCompleted": 3,
+      "roundScore": 11,
+      "date": "Tue Sep 27 2022",
+      "rating": 0,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "favoriteCourseId": null,
+      "nonFavoriteCourseId": "Old Hickory Country Club--37138",
+      "completedHoles": [
+        {
+          "holeNumber": 1,
+          "yardage": "202",
+          "par": 3,
+          "teeShot": "Green",
+          "gir": false,
+          "putts": 0,
+          "score": "1"
+        },
+        {
+          "holeNumber": 2,
+          "yardage": 200,
+          "par": 3,
+          "teeShot": "Short",
+          "gir": true,
+          "putts": "6",
+          "score": "7"
+        }
+      ],
+      "holesCompleted": 2,
+      "roundScore": 8,
+      "date": "Tue Sep 27 2022",
+      "rating": 0,
+      "id": 3
+    }
+  ],
   "states": [
     "AL",
     "AK",

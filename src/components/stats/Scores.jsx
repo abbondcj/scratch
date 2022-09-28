@@ -170,7 +170,6 @@ export const Scores = () => {
           completedRounds.map((round) => {
             for (const favCourse of favoriteCourses) {
                 if (round.favoriteCourseId != null && parseInt(round.favoriteCourseId) === favCourse.id) {
-                    console.log("fav match")
                     return (
                         <div className="round_result" key={round.id}>
                           <h3>{favCourse.name}</h3>
@@ -236,7 +235,6 @@ export const Scores = () => {
                 } 
     
                 if (round.favoriteCourseId === null) {
-                    console.log("no fav match")
                     let [courseName] = round.nonFavoriteCourseId.split("--")
                     return (
                         <div className="round_result" key={round.id}>
