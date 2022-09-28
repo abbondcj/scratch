@@ -23,7 +23,7 @@ https://rapidapi.com/golfambit-golfambit-default/api/golf-course-finder
 In the APIManager.js file under the projects Components folder, replace the marked line for personal API Key on line 8 marked (***INSERT RAPID API KEY HERE!!! ****)
 
 ### Local JSON Database
-You will need to install json-server in the project root folder using `npm i --save json-server`
+You will need to install json-server in the project root folder using `npm install json-server`
 
 CD in to the project's 'API' folder and run the following command in the terminal
 - npx json-server --watch database.json -p 9000
@@ -32,6 +32,8 @@ CD in to the project's 'API' folder and run the following command in the termina
 You will need to open a new terminal window and CD into the project root folder
 
 Run the following command in the terminal 'npm start'
+
+*May need to install react-scripts using 'npm install react-scripts'
 
 ### Issues
 If you are not rendering a list of cities/courses when searching, check your API keys for errors or unwanted whitespaces and that they have the correct access in the Google Developer Console
