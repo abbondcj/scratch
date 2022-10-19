@@ -21,112 +21,79 @@
   "favoriteCourses": [
     {
       "userId": 1,
-      "name": "Nashboro Golf Club",
-      "address": "1101 Nashboro Blvd, Nashville, TN 37217, USA",
-      "phone": "(615) 367-2311",
-      "rating": 3.5,
-      "goolgeMaps": "https://maps.google.com/?cid=935579379758880547",
-      "website": "http://www.nashborogolf.com/",
-      "id": 1
+      "name": "Huntington Country Club",
+      "address": "483 Main St, Huntington, NY 11743, USA",
+      "phone": "(631) 427-0334",
+      "rating": 4.6,
+      "goolgeMaps": "https://maps.google.com/?cid=3727366345245960081",
+      "website": "http://www.huntingtoncc.org/",
+      "id": 3
     }
   ],
   "rounds": [
     {
       "userId": 1,
-      "favoriteCourseId": 1,
-      "nonFavoriteCourseId": "Nashboro Golf Club--37217",
+      "favoriteCourseId": 3,
+      "nonFavoriteCourseId": null,
       "completedHoles": [
         {
           "holeNumber": 1,
-          "yardage": 200,
-          "par": 3,
+          "yardage": "398",
+          "par": "4",
+          "teeShot": "Fairway",
+          "gir": false,
+          "putts": "2",
+          "score": "5"
+        },
+        {
+          "holeNumber": 2,
+          "yardage": "399",
+          "par": "4",
           "teeShot": "Right",
+          "gir": true,
+          "putts": "3",
+          "score": "5"
+        },
+        {
+          "holeNumber": 3,
+          "yardage": "178",
+          "par": 3,
+          "teeShot": "Left",
           "gir": false,
           "putts": "1",
           "score": "3"
         },
         {
-          "holeNumber": 2,
-          "yardage": "430",
-          "par": "4",
+          "holeNumber": 4,
+          "yardage": "499",
+          "par": "5",
           "teeShot": "Fairway",
           "gir": true,
-          "putts": "2",
-          "score": "4"
-        }
-      ],
-      "holesCompleted": 2,
-      "roundScore": 7,
-      "date": "Tue Sep 27 2022",
-      "rating": 0,
-      "id": 1
-    },
-    {
-      "userId": 1,
-      "favoriteCourseId": null,
-      "nonFavoriteCourseId": "Huntington Country Club--11743",
-      "completedHoles": [
-        {
-          "holeNumber": 1,
-          "yardage": 200,
-          "par": 3,
-          "teeShot": "Green",
-          "gir": false,
-          "putts": "2",
-          "score": "4"
-        },
-        {
-          "holeNumber": 2,
-          "yardage": "205",
-          "par": "3",
-          "teeShot": "Green",
-          "gir": true,
           "putts": "1",
-          "score": "2"
+          "score": "4"
         },
         {
-          "holeNumber": 3,
-          "yardage": "403",
+          "holeNumber": 5,
+          "yardage": "344",
           "par": "4",
           "teeShot": "Right",
           "gir": false,
           "putts": "1",
-          "score": "5"
-        }
-      ],
-      "holesCompleted": 3,
-      "roundScore": 11,
-      "date": "Tue Sep 27 2022",
-      "rating": 0,
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "favoriteCourseId": null,
-      "nonFavoriteCourseId": "Old Hickory Country Club--37138",
-      "completedHoles": [
-        {
-          "holeNumber": 1,
-          "yardage": "202",
-          "par": 3,
-          "teeShot": "Green",
-          "gir": false,
-          "putts": 0,
           "score": "1"
         },
         {
-          "holeNumber": 2,
-          "yardage": 200,
+          "holeNumber": 6,
+          "yardage": "146",
           "par": 3,
-          "teeShot": "Short",
+          "teeShot": "Green",
           "gir": true,
-          "putts": "6",
-          "score": "7"
+          "putts": "1",
+          "score": "2"
         }
       ],
-      "holesCompleted": 2,
-      "roundScore": 8,
-      "date": "Tue Sep 27 2022",
+      "holesCompleted": 6,
+      "roundScore": 20,
+      "date": "Tue Oct 18 2022",
       "rating": 0,
       "id": 3
     }
