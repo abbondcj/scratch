@@ -150,7 +150,7 @@ export const Scorecard = () => {
     }, [currentHolePar]
   )
   
-  const submitRound = () => {
+  const submitRound = async () => {
     // if (currentHoleEdited = true) {
     //   setHoleResult()
     // }
@@ -167,7 +167,7 @@ export const Scorecard = () => {
         rating: rating
       }
 
-      fetch(rounds, {
+      await fetch(rounds, {
         method: "POST",
         headers: {
           "Content-type": "application/json"

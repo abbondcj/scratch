@@ -31,9 +31,10 @@ export const Courses = () => {
   const [favoriteListEdited, setFavoriteListEdited] = useState(false)
   const navigate = useNavigate()
   
-  const removeFavorite = async (id) => {
-    await fetch(favorite_courses + `/${id}`, {
+  const removeFavorite = (id) => {
+    fetch(favorite_courses + `/${id}`, {
       method: "DELETE"})
+    .then(res => res.json())
     .then(
       () => {
         setFavoriteListEdited(prev => !prev)
@@ -74,7 +75,18 @@ export const Courses = () => {
                             <a href={course.website}>Website</a>
                             <a href={course.goolgeMaps}>Directions</a>
                             <div className="course_buttons">
-                                <button>Play</button>
+                                <button 
+                                value={course.id}
+                                onClick={
+                                  (e) => {
+                                    localStorage.removeItem("current_favorite_course_playing")
+                                    localStorage.removeItem("current_non_favorite_course_playing")
+                                    localStorage.setItem("current_favorite_course_playing", e.target.value)
+                                    navigate("/scorecard")
+                                  }
+                                }>
+                                  Play
+                                </button>
                                 <button 
                                 value={course.id}
                                 onClick={

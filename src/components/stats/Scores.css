@@ -47,7 +47,7 @@ margin-left: 15%;
 margin-right: 15%;
 margin-top: 2%;
 margin-bottom: 2%;
-min-width: fit-content;
+width: 280px;
 padding: 2%;
 }
 
@@ -79,3 +79,4 @@ justify-content: space-evenly;
     border: none;
     border-radius: 5px;
   }
+
