@@ -411,7 +411,6 @@ export const Register = () => {
                             (e) => {
                                 let handicapCopy = handicap
                                 handicapCopy = e.target.value
-                                console.log(handicapCopy)
                                 if (isNaN(handicapCopy)) {
                                     window.alert("Must enter number only")
                                     setHandicap(0)

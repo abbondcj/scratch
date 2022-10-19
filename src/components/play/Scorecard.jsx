@@ -23,7 +23,6 @@ export const Scorecard = () => {
   const parFourTeeShotOptions = ["Long", "Left", "Fairway", "Right", "Short"]
 
   const setHoleResult = () => {
-    console.log("set Hole result called")
     let holeMatch = null
     for (const hole of completedHoles) {
       if (hole.holeNumber ===  currentHole) {
@@ -138,8 +137,7 @@ export const Scorecard = () => {
           setCurrentHoleScore(holeMatch.score)
         }
       }
-      // throwing warning saying that the listener needs to be completed holes
-      // eslint-disable-next-line
+    
     }, [currentHole]
   )
 
@@ -150,11 +148,9 @@ export const Scorecard = () => {
     }, [currentHolePar]
   )
   
-  const submitRound = async () => {
-    // if (currentHoleEdited = true) {
-    //   setHoleResult()
-    // }
-    console.log("submit round called")
+const submitRound = () => {
+    
+
     if (completedHoles.length > 0) {
       let completedRound = {
         userId : parseInt(localStorage.getItem("scratch_user_id")),
@@ -167,7 +163,7 @@ export const Scorecard = () => {
         rating: rating
       }
 
-      await fetch(rounds, {
+      fetch(rounds, {
         method: "POST",
         headers: {
           "Content-type": "application/json"

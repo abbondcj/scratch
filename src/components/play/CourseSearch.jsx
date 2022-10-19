@@ -34,16 +34,14 @@ export const CourseSearch = () => {
   )
     
   
+
   const prepFavoriteCourse = (rawData) => {
     const rawCourseData = rawData.split("--")
     let rawCourseName = rawCourseData[0]
     let rawCourseZipCode = rawCourseData[1]
     const options = {
       method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': '4a7a12f70bmsh354c4e76be8cdf6p1b69d3jsnf8c18f063789',
-        'X-RapidAPI-Host': 'golf-course-finder.p.rapidapi.com'
-      }
+      headers: gc_header
     };
     
     fetch(`https://golf-course-finder.p.rapidapi.com/course/details?zip=${rawCourseZipCode}&name=${rawCourseName}`, options)
@@ -168,29 +166,46 @@ export const CourseSearch = () => {
                             <p id="course_name">{course.name}</p>
                             <p>{course.distance}mi from {selectedLocation}</p>
                             <div className="course_buttons">
-                                <button 
-                                value={course.name + `--` + course.zip_code}
-                                onClick={
-                                  (e) => {
-                                    localStorage.removeItem("current_favorite_course_playing")
-                                    localStorage.removeItem("current_non_favorite_course_playing")
-                                    localStorage.setItem("current_non_favorite_course_playing", e.target.value)
-                                    navigate("/scorecard")
-                                  }
-                                }>
-                                  Play
-                                </button>
                                 {
                                   favoriteCourses.some(favCourse => favCourse.name.includes(course.name)) ?
+                                  <>
+                                  
                                   <button 
-                                    value={course.name + '--' + course.zip_code}
+                                  value={course.name + `--` + course.zip_code}
+                                  onClick={
+                                    (e) => {
+                                      localStorage.removeItem("current_favorite_course_playing")
+                                      localStorage.removeItem("current_non_favorite_course_playing")
+                                      localStorage.setItem("current_non_favorite_course_playing", e.target.value)
+                                      navigate("/scorecard")
+                                    }
+                                  }>
+                                    Play Course
+                                  </button>
+                                  <button 
+                                    value={course.name}
                                     onClick={
                                       (e) => {
-                                        console.log("unfavorited")
+                                        navigate("/courses")
                                       }
                                   }>
-                                    Unfavorite
-                                  </button> :
+                                    Go to favorites
+                                  </button> 
+                                  </>
+                                  :
+                                  <>
+                                  <button 
+                                    value={course.name + `--` + course.zip_code}
+                                    onClick={
+                                      (e) => {
+                                        localStorage.removeItem("current_favorite_course_playing")
+                                        localStorage.removeItem("current_non_favorite_course_playing")
+                                        localStorage.setItem("current_non_favorite_course_playing", e.target.value)
+                                        navigate("/scorecard")
+                                      }
+                                    }>
+                                    Play Course
+                                  </button>
                                   <button 
                                     value={course.name + '--' + course.zip_code}
                                     onClick={
@@ -198,8 +213,9 @@ export const CourseSearch = () => {
                                         handleFavorite(e.target.value)
                                       }
                                   }>
-                                    Favorite
+                                    Favorite Course
                                   </button>
+                                  </>
                                 }
                             </div>
                         </div>

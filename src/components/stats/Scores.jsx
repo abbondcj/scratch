@@ -170,7 +170,6 @@ export const Scores = () => {
           completedRounds.map((round) => {
             for (const favCourse of favoriteCourses) {
                 if (round.favoriteCourseId != null && parseInt(round.favoriteCourseId) === favCourse.id) {
-                    console.log("fav match")
                     return (
                         <div className="round_result" key={round.id}>
                           <h3>{favCourse.name}</h3>
@@ -236,26 +235,17 @@ export const Scores = () => {
                 } 
 
               }
-              if (round.favoriteCourseId === null) {
-                  console.log("no fav match")
-                  let [courseName] = round.nonFavoriteCourseId.split("--")
-                  return (
-                      <div className="round_result" key={round.id}>
-                        <h3>{courseName}</h3>
-                        <p>Date: {round.date}</p>
-                        <p>Holes completed: {round.holesCompleted}</p>
-                        <p>Score: {round.roundScore}</p>
-                        <p>Rating: {round.rating === "0" ? round.rating/5.0 : `No Rating`}</p>
-                        <div className="scorecard_display">
-                          {
-                            displayRoundScorecard === round.id ?
-                            <div className="scorecard_label">
-                              <p>Hole #</p>
-                              <p>Par</p>
-                              <p>Score</p>
-                            </div> : ``
-                          }
-                          <div>
+ 
+                if (round.favoriteCourseId === null) {
+                    let [courseName] = round.nonFavoriteCourseId.split("--")
+                    return (
+                        <div className="round_result" key={round.id}>
+                          <h3>{courseName}</h3>
+                          <p>Date: {round.date}</p>
+                          <p>Holes completed: {round.holesCompleted}</p>
+                          <p>Score: {round.roundScore}</p>
+                          <p>Rating: {round.rating === "0" ? round.rating/5.0 : `No Rating`}</p>
+                          <div className="scorecard_display">
                             {
                               displayRoundScorecard === round.id ?
                               <>

@@ -18,8 +18,119 @@
       "id": 1
     }
   ],
-  "favoriteCourses": [],
-  "rounds": [],
+  "favoriteCourses": [
+    {
+      "userId": 1,
+      "name": "Nashboro Golf Club",
+      "address": "1101 Nashboro Blvd, Nashville, TN 37217, USA",
+      "phone": "(615) 367-2311",
+      "rating": 3.5,
+      "goolgeMaps": "https://maps.google.com/?cid=935579379758880547",
+      "website": "http://www.nashborogolf.com/",
+      "id": 1
+    }
+  ],
+  "rounds": [
+    {
+      "userId": 1,
+      "favoriteCourseId": 1,
+      "nonFavoriteCourseId": "Nashboro Golf Club--37217",
+      "completedHoles": [
+        {
+          "holeNumber": 1,
+          "yardage": 200,
+          "par": 3,
+          "teeShot": "Right",
+          "gir": false,
+          "putts": "1",
+          "score": "3"
+        },
+        {
+          "holeNumber": 2,
+          "yardage": "430",
+          "par": "4",
+          "teeShot": "Fairway",
+          "gir": true,
+          "putts": "2",
+          "score": "4"
+        }
+      ],
+      "holesCompleted": 2,
+      "roundScore": 7,
+      "date": "Tue Sep 27 2022",
+      "rating": 0,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "favoriteCourseId": null,
+      "nonFavoriteCourseId": "Huntington Country Club--11743",
+      "completedHoles": [
+        {
+          "holeNumber": 1,
+          "yardage": 200,
+          "par": 3,
+          "teeShot": "Green",
+          "gir": false,
+          "putts": "2",
+          "score": "4"
+        },
+        {
+          "holeNumber": 2,
+          "yardage": "205",
+          "par": "3",
+          "teeShot": "Green",
+          "gir": true,
+          "putts": "1",
+          "score": "2"
+        },
+        {
+          "holeNumber": 3,
+          "yardage": "403",
+          "par": "4",
+          "teeShot": "Right",
+          "gir": false,
+          "putts": "1",
+          "score": "5"
+        }
+      ],
+      "holesCompleted": 3,
+      "roundScore": 11,
+      "date": "Tue Sep 27 2022",
+      "rating": 0,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "favoriteCourseId": null,
+      "nonFavoriteCourseId": "Old Hickory Country Club--37138",
+      "completedHoles": [
+        {
+          "holeNumber": 1,
+          "yardage": "202",
+          "par": 3,
+          "teeShot": "Green",
+          "gir": false,
+          "putts": 0,
+          "score": "1"
+        },
+        {
+          "holeNumber": 2,
+          "yardage": 200,
+          "par": 3,
+          "teeShot": "Short",
+          "gir": true,
+          "putts": "6",
+          "score": "7"
+        }
+      ],
+      "holesCompleted": 2,
+      "roundScore": 8,
+      "date": "Tue Sep 27 2022",
+      "rating": 0,
+      "id": 3
+    }
+  ],
   "states": [
     "AL",
     "AK",
