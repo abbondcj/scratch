@@ -1,0 +1,77 @@
+Date : 2022-10-18 20:24:06
+Directory : c:\Users\abbon\workspace\scratch
+Total : 37 files,  32894 codes, 19 comments, 205 blanks, all 33118 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| JSON             |          5 |     30,751 |          0 |          3 |     30,754 |
+| JavaScript React |         13 |      1,718 |         10 |        102 |      1,830 |
+| CSS              |         11 |        308 |          5 |         52 |        365 |
+| JavaScript       |          6 |         59 |          4 |         13 |         76 |
+| Markdown         |          1 |         38 |          0 |         33 |         71 |
+| HTML             |          1 |         20 |          0 |          2 |         22 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                           |         37 |     32,894 |         19 |        205 |     33,118 |
+| api                                                                         |          1 |        177 |          0 |          0 |        177 |
+| public                                                                      |          2 |         45 |          0 |          3 |         48 |
+| src                                                                         |         30 |      2,085 |         19 |        167 |      2,271 |
+| src\components                                                              |         23 |      2,030 |         15 |        152 |      2,197 |
+| src\components\auth                                                         |          4 |        703 |          0 |         29 |        732 |
+| src\components\courses                                                      |          2 |        117 |          0 |         15 |        132 |
+| src\components\dashboard                                                    |          2 |         44 |          0 |          4 |         48 |
+| src\components\nav                                                          |          2 |         58 |          0 |          8 |         66 |
+| src\components\play                                                         |          7 |        653 |         15 |         62 |        730 |
+| src\components\profile                                                      |          1 |         37 |          0 |          4 |         41 |
+| src\components\stats                                                        |          2 |        370 |          0 |         23 |        393 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                    | language         | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| c:\Users\abbon\workspace\scratch\README.md                                  | Markdown         |         38 |          0 |         33 |         71 |
+| c:\Users\abbon\workspace\scratch\api\database.json                          | JSON             |        177 |          0 |          0 |        177 |
+| c:\Users\abbon\workspace\scratch\database.json                              | JSON             |         19 |          0 |          0 |         19 |
+| c:\Users\abbon\workspace\scratch\package-lock.json                          | JSON             |     30,487 |          0 |          1 |     30,488 |
+| c:\Users\abbon\workspace\scratch\package.json                               | JSON             |         43 |          0 |          1 |         44 |
+| c:\Users\abbon\workspace\scratch\public\index.html                          | HTML             |         20 |          0 |          2 |         22 |
+| c:\Users\abbon\workspace\scratch\public\manifest.json                       | JSON             |         25 |          0 |          1 |         26 |
+| c:\Users\abbon\workspace\scratch\src\App.css                                | CSS              |          3 |          0 |          0 |          3 |
+| c:\Users\abbon\workspace\scratch\src\App.test.js                            | JavaScript       |          7 |          0 |          2 |          9 |
+| c:\Users\abbon\workspace\scratch\src\Scratch.js                             | JavaScript       |         18 |          0 |          3 |         21 |
+| c:\Users\abbon\workspace\scratch\src\components\ApiManager.js               | JavaScript       |         10 |          0 |          1 |         11 |
+| c:\Users\abbon\workspace\scratch\src\components\ApplicationViews.jsx        | JavaScript React |         24 |          0 |          3 |         27 |
+| c:\Users\abbon\workspace\scratch\src\components\Home.jsx                    | JavaScript React |         14 |          0 |          3 |         17 |
+| c:\Users\abbon\workspace\scratch\src\components\auth\Login.css              | CSS              |         36 |          0 |          4 |         40 |
+| c:\Users\abbon\workspace\scratch\src\components\auth\Login.jsx              | JavaScript React |         87 |          0 |          6 |         93 |
+| c:\Users\abbon\workspace\scratch\src\components\auth\Register.css           | CSS              |         43 |          0 |          7 |         50 |
+| c:\Users\abbon\workspace\scratch\src\components\auth\Register.jsx           | JavaScript React |        537 |          0 |         12 |        549 |
+| c:\Users\abbon\workspace\scratch\src\components\courses\FavoriteCourse.css  | CSS              |         29 |          0 |          4 |         33 |
+| c:\Users\abbon\workspace\scratch\src\components\courses\FavoriteCourses.jsx | JavaScript React |         88 |          0 |         11 |         99 |
+| c:\Users\abbon\workspace\scratch\src\components\dashboard\Dashboard.css     | CSS              |          4 |          0 |          0 |          4 |
+| c:\Users\abbon\workspace\scratch\src\components\dashboard\Dashboard.jsx     | JavaScript React |         40 |          0 |          4 |         44 |
+| c:\Users\abbon\workspace\scratch\src\components\nav\Nav.css                 | CSS              |         23 |          0 |          5 |         28 |
+| c:\Users\abbon\workspace\scratch\src\components\nav\Nav.jsx                 | JavaScript React |         35 |          0 |          3 |         38 |
+| c:\Users\abbon\workspace\scratch\src\components\play\CourseSearch.css       | CSS              |         52 |          5 |         12 |         69 |
+| c:\Users\abbon\workspace\scratch\src\components\play\CourseSearch.jsx       | JavaScript React |        195 |          5 |         16 |        216 |
+| c:\Users\abbon\workspace\scratch\src\components\play\FindCourse.jsx         | JavaScript React |         12 |          0 |          2 |         14 |
+| c:\Users\abbon\workspace\scratch\src\components\play\Play.css               | CSS              |         10 |          0 |          1 |         11 |
+| c:\Users\abbon\workspace\scratch\src\components\play\Play.jsx               | JavaScript React |         56 |          0 |          5 |         61 |
+| c:\Users\abbon\workspace\scratch\src\components\play\Scorecard.css          | CSS              |         35 |          0 |          5 |         40 |
+| c:\Users\abbon\workspace\scratch\src\components\play\Scorecard.jsx          | JavaScript React |        293 |          5 |         21 |        319 |
+| c:\Users\abbon\workspace\scratch\src\components\profile\Profile.jsx         | JavaScript React |         37 |          0 |          4 |         41 |
+| c:\Users\abbon\workspace\scratch\src\components\stats\Scores.css            | CSS              |         70 |          0 |         11 |         81 |
+| c:\Users\abbon\workspace\scratch\src\components\stats\Scores.jsx            | JavaScript React |        300 |          0 |         12 |        312 |
+| c:\Users\abbon\workspace\scratch\src\index.css                              | CSS              |          3 |          0 |          3 |          6 |
+| c:\Users\abbon\workspace\scratch\src\index.js                               | JavaScript       |         11 |          0 |          4 |         15 |
+| c:\Users\abbon\workspace\scratch\src\reportWebVitals.js                     | JavaScript       |         12 |          0 |          2 |         14 |
+| c:\Users\abbon\workspace\scratch\src\setupTests.js                          | JavaScript       |          1 |          4 |          1 |          6 |
+| Total                                                                       |                  |     32,894 |         19 |        205 |     33,118 |
++-----------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

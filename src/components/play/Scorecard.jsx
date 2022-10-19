@@ -148,8 +148,9 @@ export const Scorecard = () => {
     }, [currentHolePar]
   )
   
-  const submitRound = () => {
+const submitRound = () => {
     
+
     if (completedHoles.length > 0) {
       let completedRound = {
         userId : parseInt(localStorage.getItem("scratch_user_id")),

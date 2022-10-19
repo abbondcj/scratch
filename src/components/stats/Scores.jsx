@@ -67,9 +67,9 @@ export const Scores = () => {
               }
               round.completedHoles.map(
                 (hole) => {
-                  if (hole.score === 1) {
+                  if (hole.score == 1) {
                     aceCopy += 1
-                  } else if (hole.par - hole.score === 3) {
+                  } else if (hole.par - hole.score >= 3) {
                     albatrossCopy += 1
                   } else if (hole.par - hole.score === 2) {
                     eagleCopy += 1
@@ -233,7 +233,9 @@ export const Scores = () => {
                         </div>
                     )
                 } 
-    
+
+              }
+ 
                 if (round.favoriteCourseId === null) {
                     let [courseName] = round.nonFavoriteCourseId.split("--")
                     return (
@@ -246,60 +248,50 @@ export const Scores = () => {
                           <div className="scorecard_display">
                             {
                               displayRoundScorecard === round.id ?
-                              <div className="scorecard_label">
-                                <p>Hole #</p>
-                                <p>Par</p>
-                                <p>Score</p>
-                              </div> : ``
+                              <>
+                              <div className="hole_label">
+                                {
+                                  round.completedHoles.map((hole) => {
+                                    return (
+                                      <div key={round.id + hole.holeNumber}>
+                                        <p>{hole.holeNumber}</p>
+                                      </div>
+                                    )
+                                  })
+                                }
+                              </div>
+                              <div className="hole_label">
+                                {
+                                  round.completedHoles.map((hole) => {
+                                    return (
+                                      <div key={round.id + hole.holeNumber}>
+                                        <p>{hole.par}</p>
+                                      </div>
+                                    )
+                                  })
+                                }
+                              </div>
+                              <div className="hole_label">
+                                {
+                                  round.completedHoles.map((hole) => {
+                                    return (
+                                      <div key={round.id + hole.holeNumber}>
+                                        <p>{hole.score}</p>
+                                      </div>
+                                    )
+                                  })
+                                }
+                              </div>
+                              <button onClick={() => {setDisplayScorecard(0)}}>Close scorecard</button>
+                              </>
+                              :
+                              <button value={round.id} onClick={(e) => {setDisplayScorecard(parseInt(e.target.value))}}>View scorecard</button>                            
                             }
-                            <div>
-                              {
-                                displayRoundScorecard === round.id ?
-                                <>
-                                <div className="hole_label">
-                                  {
-                                    round.completedHoles.map((hole) => {
-                                      return (
-                                        <div key={round.id + hole.holeNumber}>
-                                          <p>{hole.holeNumber}</p>
-                                        </div>
-                                      )
-                                    })
-                                  }
-                                </div>
-                                <div className="hole_label">
-                                  {
-                                    round.completedHoles.map((hole) => {
-                                      return (
-                                        <div key={round.id + hole.holeNumber}>
-                                          <p>{hole.par}</p>
-                                        </div>
-                                      )
-                                    })
-                                  }
-                                </div>
-                                <div className="hole_label">
-                                  {
-                                    round.completedHoles.map((hole) => {
-                                      return (
-                                        <div key={round.id + hole.holeNumber}>
-                                          <p>{hole.score}</p>
-                                        </div>
-                                      )
-                                    })
-                                  }
-                                </div>
-                                <button onClick={() => {setDisplayScorecard(0)}}>Close scorecard</button>
-                                </>
-                                :
-                                <button value={round.id} onClick={(e) => {setDisplayScorecard(parseInt(e.target.value))}}>View scorecard</button>                            
-                              }
-                            </div>
-                          </div>                      
-                        </div>
-                    )
-                }
-            }
+                          </div>
+                        </div>                      
+                      </div>
+                  )
+              }
         }) : <button id="play_button" onClick={() => {navigate("/play")}}>Play</button>
         }
       </div>
